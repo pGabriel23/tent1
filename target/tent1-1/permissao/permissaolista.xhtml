@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+
+            <h:form>
+                <p:dataTable value="#{permissaoControle.listaPermissao}" var="per">
+
+                    <p:column headerText="ID" filterBy="#{per.id}" filterMatchMode="contains">
+                        #{per.id}
+                    </p:column>
+
+                    <p:column headerText="Cidade" filterBy="#{per.cidade}" filterMatchMode="contains">
+                        <p:selectBooleanCheckbox value="#{per.cidade}" disabled="true"/>
+                    </p:column>
+
+                    <p:column headerText="Cliente" filterBy="#{per.cliente}" filterMatchMode="contains">
+                        <p:selectBooleanCheckbox value="#{per.cliente}" disabled="true"/>
+                    </p:column>
+
+                    <p:column headerText="Estado" filterBy="#{per.estado}" filterMatchMode="contains">
+                        <p:selectBooleanCheckbox value="#{per.estado}" disabled="true"/>
+                    </p:column>
+
+                    <p:column headerText="Filiais" filterBy="#{per.filiais}" filterMatchMode="contains">
+                        <p:selectBooleanCheckbox value="#{per.filiais}" disabled="true"/>
+                    </p:column>
+
+                    <p:column headerText="Fornecedor" filterBy="#{per.fornecedor}" filterMatchMode="contains">
+                        <p:selectBooleanCheckbox value="#{per.fornecedor}" disabled="true"/>
+                    </p:column>
+
+                    <p:column headerText="Funcionario" filterBy="#{per.funcionario}" filterMatchMode="contains">
+                        <p:selectBooleanCheckbox value="#{per.funcionario}" disabled="true"/>
+                    </p:column>
+
+                    <p:column headerText="Permissao" filterBy="#{per.permissao}" filterMatchMode="contains">
+                        <p:selectBooleanCheckbox value="#{per.permissao}" disabled="true"/>
+                    </p:column>
+
+                    <p:column headerText="Sistema" filterBy="#{per.sistema}" filterMatchMode="contains">
+                        <p:selectBooleanCheckbox value="#{per.sistema}" disabled="true"/>
+                    </p:column>
+
+                    <p:column headerText="Status do servico" filterBy="#{per.status_servico}" filterMatchMode="contains">
+                        <p:selectBooleanCheckbox value="#{per.status_servico}" disabled="true"/>
+                    </p:column>
+
+                    <p:column headerText="Usuario" filterBy="#{per.usuario}" filterMatchMode="contains">
+                        <p:selectBooleanCheckbox value="#{per.usuario}" disabled="true"/>
+                    </p:column>
+
+                    <p:column headerText="Venda" filterBy="#{per.venda}" filterMatchMode="contains">
+                        <p:selectBooleanCheckbox value="#{per.venda}" disabled="true"/>
+                    </p:column>
+
+                    <p:column headerText="Operacoes">
+                        <p:commandLink value="Excluir" action="#{permissaoControle.excluir(per)}" ajax="false" immediate="true"/>
+                    </p:column>
+
+                </p:dataTable> 
+                <p:commandButton value="Cadastrar Permissões" action="permissaoedita" />
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

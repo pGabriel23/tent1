@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+
+            <h:form>
+                <p:dataTable value="#{fornecedorControle.listaFornecedor}" var="for">
+
+                    <p:column headerText="ID" filterBy="#{for.id}" filterMatchMode="contains">
+                        #{for.id}
+                    </p:column>
+
+                    <p:column headerText="nome" filterBy="#{for.nome}" filterMatchMode="contains">
+                        #{for.nome}
+                    </p:column>
+
+                    <p:column headerText="contato" filterBy="#{for.contato}" filterMatchMode="contains">
+                        #{for.contato}
+                    </p:column>
+                    
+                    <p:column headerText="Operacoes">
+                        <p:commandLink value="Excluir" action="#{fornecedorControle.excluir(for)}" ajax="false" immediate="true"/>
+                    </p:column>
+
+                </p:dataTable> 
+                <p:commandButton value="Cadastrar Fornecedor" action="fornecedoredita" />
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

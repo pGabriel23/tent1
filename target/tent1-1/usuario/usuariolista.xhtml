@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+
+            <h:form>
+                
+                <p:dataTable value="#{usuarioControle.listaUsuario}" var="usr">
+
+                    <p:column headerText="ID" filterBy="#{usr.id}" filterMatchMode="contains">
+                        #{usr.id}
+                    </p:column>
+
+                    <p:column headerText="nome" filterBy="#{usr.nome}" filterMatchMode="contains">
+                        #{usr.nome}
+                    </p:column>
+
+
+                    <p:column headerText="funcionario" filterBy="#{usr.funcionario.primeiroNome}" filterMatchMode="contains">
+                        #{usr.funcionario.primeiroNome}
+                    </p:column>
+
+                    <p:column headerText="permissao" filterBy="#{usr.permissao.id}" filterMatchMode="contains">
+                        #{usr.permissao.id}
+                    </p:column>
+
+                    <p:column headerText="senha">
+                        <h:outputText value="#{usr.senha}" rendered="#{usuarioControle.senhaToggle}"/>
+                    </p:column>
+
+                    <p:column headerText="Operacoes">
+                        <p:commandLink value="Excluir " action="#{usuarioControle.excluir(usr)}" ajax="false" immediate="true"/>
+                        <p:commandLink value=" Mostrar Senha" action="#{usuarioControle.senhaToggle()}" ajax="false" immediate="true"/>
+                    </p:column>
+
+                </p:dataTable> 
+                <p:commandButton value="Cadastrar Novo Usuario" action="statusservicoedita" />
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

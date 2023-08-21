@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>tent1</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="west" size="180">
+                <h:form>
+
+                    <p:menu style="width: 160px">
+
+                        <p:submenu label="Cadastros" rendered="true">
+                            <p:menuitem value="cidades" ajax="false" action="/cidade/cidadelista"/>
+                            <p:menuitem value="clientes" ajax="false" action="/cliente/clientelista"/>
+                            <p:menuitem value="estados" ajax="false" action="/estado/estadolista"/>
+                            <p:menuitem value="fornecedores" ajax="false" action="/fornecedor/fornecedorlista"/>
+                            <p:menuitem value="funcionarios" ajax="false" action="/funcionario/funcionariolista"/>
+                            <p:menuitem value="permissões" ajax="false" action="/permissao/permissaolista"/>
+                            <p:menuitem value="sistemas" ajax="false" action="/sistema/sistemalista"/>
+                            <p:menuitem value="status do servico" ajax="false" action="/statusservico/statusservicolista"/>
+                            <p:menuitem value="usuario" ajax="false" action="/usuario/usuariolista"/>
+                            <p:menuitem value="venda" ajax="false" action="/venda/vendalista"/>
+                        </p:submenu> 
+
+                        <p:submenu label="Movimentos" rendered="true">
+                            <p:menuitem value="" ajax="false" action="#"/>
+                        </p:submenu>
+
+                        <p:submenu label="Relatorios" rendered="true">
+                            <p:menuitem value="" ajax="false" action="#"/>
+                        </p:submenu>
+
+                    </p:menu>
+
+                </h:form>
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="east" size="35">
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert id="corpo" name="body">
+                    Sejam Bem vindo!
+                </ui:insert>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

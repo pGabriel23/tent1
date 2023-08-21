@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+
+            <h:form>
+                <p:dataTable value="#{funcionarioControle.listaFuncionario}" var="fun">
+
+                    <p:column headerText="ID" filterBy="#{fun.id}" filterMatchMode="contains">
+                        #{fun.id}
+                    </p:column>
+
+                    <p:column headerText="primeiroNome" filterBy="#{fun.primeiroNome}" filterMatchMode="contains">
+                        #{fun.primeiroNome}
+                    </p:column>
+
+                    <p:column headerText="segundoNome" filterBy="#{fun.segundoNome}" filterMatchMode="contains">
+                        #{fun.segundoNome}
+                    </p:column>
+                    
+                    <p:column headerText="funcao" filterBy="#{fun.funcao}" filterMatchMode="contains">
+                        #{fun.funcao}
+                    </p:column>
+                    
+                    <p:column headerText="cidade" filterBy="#{fun.cidade.nome}" filterMatchMode="contains">
+                        #{fun.cidade.nome}-#{fun.cidade.uf.uf}
+                    </p:column>
+                    
+                    <p:column headerText="Operacoes">
+                        <p:commandLink value="Excluir" action="#{funcionarioControle.excluir(fun)}" ajax="false" immediate="true"/>
+                    </p:column>
+
+                </p:dataTable> 
+                <p:commandButton value="Cadastrar Funcionario" action="funcionarioedita" />
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

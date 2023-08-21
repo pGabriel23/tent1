@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+
+            <h:form>
+                <p:dataTable value="#{clienteControle.listaCliente}" var="cte">
+
+                    <p:column headerText="ID" filterBy="#{cte.id}" filterMatchMode="contains">
+                        #{cte.id}
+                    </p:column>
+
+                    <p:column headerText="primeiroNome" filterBy="#{cte.primeiroNome}" filterMatchMode="contains">
+                        #{cte.primeiroNome}
+                    </p:column>
+
+                    <p:column headerText="segundoNome" filterBy="#{cte.segundoNome}" filterMatchMode="contains">
+                        #{cte.segundoNome}
+                    </p:column>
+
+                    <p:column headerText="cidade" filterBy="#{cte.cidade.nome}" filterMatchMode="contains">
+                        #{cte.cidade.nome}
+                    </p:column>
+
+                    <p:column headerText="UF" filterBy="#{cte.estado.uf}" filterMatchMode="contains">
+                        #{cte.estado.uf}
+                    </p:column>
+
+                    <p:column headerText="Operacoes">
+                        <p:commandLink value="Excluir" action="#{clienteControle.excluir(cte)}" ajax="false" immediate="true"/>
+                    </p:column>
+
+                </p:dataTable> 
+                <p:commandButton value="Cadastrar Cliente" action="clienteedita" />
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

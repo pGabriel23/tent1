@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+
+            <h:form>
+                <p:dataTable value="#{sistemaControle.listaSistema}" var="sis">
+
+                    <p:column headerText="ID" filterBy="#{sis.id}" filterMatchMode="contains">
+                        #{sis.id}
+                    </p:column>
+
+                    <p:column headerText="inversor" filterBy="#{sis.inversor}" filterMatchMode="contains">
+                        #{sis.inversor}
+                    </p:column>
+
+                    <p:column headerText="quantidade de inversores" filterBy="#{sis.inversor1}" filterMatchMode="contains">
+                        #{sis.inversor1}
+                    </p:column>
+                    
+                    <p:column headerText="modulo" filterBy="#{sis.modulo}" filterMatchMode="contains">
+                        #{sis.modulo}
+                    </p:column>
+                    
+                    <p:column headerText="quantidade de modulos" filterBy="#{sis.modulo1}" filterMatchMode="contains">
+                        #{sis.modulo1}
+                    </p:column>
+                    
+                    <p:column headerText="fornecedor" filterBy="#{sis.fornecedor.nome}" filterMatchMode="contains">
+                        #{sis.fornecedor.nome}
+                    </p:column>
+                    
+                    <p:column headerText="preco" filterBy="#{sis.preco}" filterMatchMode="contains">
+                        #{sis.preco}
+                    </p:column>
+                    
+                    <p:column headerText="codigo" filterBy="#{sis.codigo}" filterMatchMode="contains">
+                        #{sis.codigo}
+                    </p:column>
+                    
+                    <p:column headerText="Operacoes">
+                        <p:commandLink value="Excluir" action="#{sistemaControle.excluir(sis)}" ajax="false" immediate="true"/>
+                    </p:column>
+
+                </p:dataTable> 
+                <p:commandButton value="Cadastrar Sistema" action="sistemaedita" />
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

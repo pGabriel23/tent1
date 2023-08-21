@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+
+            <h:form>
+                <p:dataTable value="#{vendaControle.listaVenda}" var="vnd">
+
+                    <p:column headerText="ID" filterBy="#{vnd.id}" filterMatchMode="contains">
+                        #{vnd.id}
+                    </p:column>
+
+                    <p:column headerText="preco" filterBy="#{vnd.preco}" filterMatchMode="contains">
+                        #{vnd.preco}
+                    </p:column>
+
+                    <p:column headerText="cliente" filterBy="#{vnd.cliente}" filterMatchMode="contains">
+                        #{vnd.cliente.primeiroNome} #{vnd.cliente.segundoNome}
+                    </p:column>
+                    
+                    <p:column headerText="sistema" filterBy="#{vnd.sistema.codigo}" filterMatchMode="contains">
+                        #{vnd.sistema.codigo}
+                    </p:column>
+                    
+                    <p:column headerText="vendedor" filterBy="#{vnd.vendedor}" filterMatchMode="contains">
+                        #{vnd.vendedor}
+                    </p:column>
+                    
+                    <p:column headerText="data" filterBy="#{vnd.data}" filterMatchMode="contains">
+                        #{vnd.data}
+                    </p:column>
+                    
+                    <p:column headerText="Operacoes">
+                        <p:commandLink value="Excluir" action="#{vendaControle.excluir(vnd)}" ajax="false" immediate="true"/>
+                    </p:column>
+
+                </p:dataTable> 
+                <p:commandButton value="Registrar Nova Venda" action="statusservicoedita" />
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

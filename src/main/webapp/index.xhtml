@@ -15,38 +15,35 @@
                     <p:menu style="width: 160px">
 
                         <p:submenu label="Cadastros" rendered="true">
-                            <p:menuitem value="cidades" ajax="false" action="/cidade/cidadelista"/>
-                            <p:menuitem value="clientes" ajax="false" action="/cliente/clientelista"/>
-                            <p:menuitem value="estados" ajax="false" action="/estado/estadolista"/>
-                            <p:menuitem value="fornecedores" ajax="false" action="/fornecedor/fornecedorlista"/>
-                            <p:menuitem value="funcionarios" ajax="false" action="/funcionario/funcionariolista"/>
-                            <p:menuitem value="permissões" ajax="false" action="/permissao/permissaolista"/>
-                            <p:menuitem value="sistemas" ajax="false" action="/sistema/sistemalista"/>
-                            <p:menuitem value="status do servico" ajax="false" action="/statusservico/statusservicolista"/>
-                            <p:menuitem value="usuario" ajax="false" action="/usuario/usuariolista"/>
-                            <p:menuitem value="venda" ajax="false" action="/venda/vendalista"/>
+                            <p:menuitem value="cidades" ajax="false" outcome="/cidade/cidadelista"/>
+                            <p:menuitem value="clientes" ajax="false" outcome="/cliente/clientelista"/>
+                            <p:menuitem value="estados" ajax="false" outcome="/estado/estadolista"/>
+                            <p:menuitem value="filiais" ajax="false" outcome="/filiais/filiaislista"/>
+                            <p:menuitem value="fornecedores" ajax="false" outcome="/fornecedor/fornecedorlista"/>
+                            <p:menuitem value="funcionarios" ajax="false" outcome="/funcionario/funcionariolista"/>
+                            <p:menuitem value="permissões" ajax="false" outcome="/permissao/permissaolista"/>
+                            <p:menuitem value="sistemas" ajax="false" outcome="/sistema/sistemalista"/>
+                            <p:menuitem value="usuario" ajax="false" outcome="/usuario/usuariolista"/>
                         </p:submenu> 
 
                         <p:submenu label="Movimentos" rendered="true">
-                            <p:menuitem value="" ajax="false" action="#"/>
+                            <p:menuitem value="venda" ajax="false" outcome="/venda/vendalista"/>
+                            <p:menuitem value="status do servico" ajax="false" outcome="/statusservico/statusservicolista"/>
                         </p:submenu>
 
                         <p:submenu label="Relatorios" rendered="true">
-                            <p:menuitem value="" ajax="false" action="#"/>
+                            <p:menuitem value="Login" ajax="false" outcome="/login" rendered="#{!loginControle.isLogged}"/>
+                            <p:menuitem value="Logout" ajax="false" outcome="/logout" rendered="#{loginControle.isLogged}"/>
                         </p:submenu>
 
                     </p:menu>
-
                 </h:form>
-
-            </p:layoutUnit>
-
-            <p:layoutUnit position="east" size="35">
-
             </p:layoutUnit>
 
             <p:layoutUnit position="center">
                 <ui:insert id="corpo" name="body">
+                    <p:outputLabel value=" Usuario Logado = #{loginControle.usuarioAtual.nome}" rendered="#{loginControle.isLogged}"/>
+                    <br/>
                     Sejam Bem vindo!
                 </ui:insert>
             </p:layoutUnit>

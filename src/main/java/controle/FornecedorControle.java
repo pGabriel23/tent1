@@ -18,7 +18,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class FornecedorControle {
-    
+
     private Fornecedor fornecedor = new Fornecedor();
     @EJB
     private FornecedorFacade fornecedorFacade;

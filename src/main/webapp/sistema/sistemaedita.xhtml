@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+
+            <h:form>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="ID" for="id" />
+                    <p:inputText id="id" value="#{sistemaControle.sistema.id}" title="ID do sistema" required="true"/>
+
+                    <p:outputLabel value="inversor" for="inversor" />
+                    <p:inputText id="inversor" value="#{sistemaControle.sistema.inversor}" title="Modelo do(s) inversor(es)" required="true"/>
+
+                    <p:outputLabel value="Quantidade de inversor(es)" for="inversor1" />
+                    <p:inputText id="inversor1" value="#{sistemaControle.sistema.inversor1}" title="Quantidade de inversor(es)" required="true"/>
+
+                    <p:outputLabel value="modulo" for="modulo" />
+                    <p:inputText id="modulo" value="#{sistemaControle.sistema.modulo}" title="Modelo do(s) modulo(s)" required="true"/>
+
+                    <p:outputLabel value="Quantidade de modulo" for="modulo1" />
+                    <p:inputText id="modulo1" value="#{sistemaControle.sistema.modulo1}" title="Quantidade de modulo" required="true"/>
+
+                    <p:outputLabel value="Codigo do sistema" for="codigo" />
+                    <p:inputText id="codigo" value="#{sistemaControle.sistema.codigo}" title="Codigo do sistema" required="true"/>
+
+                    <p:outputLabel value="Preco do sistema" for="preco" />
+                    <p:inputText id="preco" value="#{sistemaControle.sistema.preco}" title="Preco do sistema" required="true"/>
+
+
+
+                    <p:outputLabel value="Fornecedor" for="f" /> 
+                    <p:selectOneMenu id="f" value="#{sistemaControle.sistema.fornecedor}" converter="#{sistemaControle.fornecedorConverter}" >
+                        <f:selectItems value="#{fornecedorControle.listaFornecedor}"
+                                       var="fnc"
+                                       itemLabel="${fnc.nome}"
+                                       itemValue="#{fnc}"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+                <br/>
+
+                <p:commandButton value="Salvar" action="#{sistemaControle.salvar()}" ajax="false" />
+                <p:commandButton value="Voltar" action="sistemalista" immediate="true" ajax="false"/>
+            </h:form>            
+
+        </ui:define>
+    </ui:composition>
+
+</html>

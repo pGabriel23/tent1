@@ -3,6 +3,8 @@ C:\Users\paulo\Desktop\tcc\tent1\src\main\java\entidades\Usuario.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\entidades\Estado.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\entidades\Permissao.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\entidades\Fornecedor.java
+C:\Users\paulo\Desktop\tcc\tent1\src\main\java\controle\LoginControle.java
+C:\Users\paulo\Desktop\tcc\tent1\src\main\java\Converter\ConverterGererico.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\controle\UsuarioControle.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\facade\SistemaFacade.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\entidades\Venda.java
@@ -12,11 +14,13 @@ C:\Users\paulo\Desktop\tcc\tent1\src\main\java\entidades\Sistema.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\controle\EstadoControle.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\facade\CidadeFacade.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\facade\PermissaoFacade.java
+C:\Users\paulo\Desktop\tcc\tent1\src\main\java\filter\LoginFilter.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\controle\PermissaoControle.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\facade\EstadoFacade.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\controle\ClienteControle.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\controle\FiliaisControle.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\facade\ClienteFacade.java
+C:\Users\paulo\Desktop\tcc\tent1\src\main\java\entidades\ClassePai.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\facade\UsuarioFacade.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\controle\CidadeControle.java
 C:\Users\paulo\Desktop\tcc\tent1\src\main\java\controle\FornecedorControle.java

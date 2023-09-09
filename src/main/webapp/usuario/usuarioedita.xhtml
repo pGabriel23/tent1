@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+            <p:messages />
+
+            <h:form>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="ID" for="id" />
+                    <p:inputText id="id" value="#{usuarioControle.usuario.id}" title="ID do usuario" required="true"/>
+                    <p:outputLabel value="Nome" for="nome" />
+                    <p:inputText id="nome" value="#{usuarioControle.usuario.nome}" title="Nome de usuario" required="true"/>
+                    <p:outputLabel value="Senha" for="senha" />
+                    <p:password id="senha" value="#{usuarioControle.usuario.senha}" title="Senha" required="true" />
+
+                    <p:outputLabel value="Funcionario" for="f" /> 
+                    <p:selectOneMenu id="f" value="#{usuarioControle.usuario.funcionario}" converter="#{usuarioControle.funcionarioConverter}" >
+                        <f:selectItems value="#{funcionarioControle.listaFuncionario}"
+                                       var="fun"
+                                       itemLabel="${fun.primeiroNome} ${fun.segundoNome}"
+                                       itemValue="#{fun}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Permissao" for="p" /> 
+                    <p:selectOneMenu id="p" value="#{usuarioControle.usuario.permissao}" converter="#{usuarioControle.permissaoConverter}" >
+                        <f:selectItems value="#{permissaoControle.listaPermissao}"
+                                       var="perm"
+                                       itemLabel="${perm.id}"
+                                       itemValue="#{perm}"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+                <br/>
+
+                <p:commandButton value="Salvar" action="#{usuarioControle.salvar()}" ajax="false" />
+                <p:commandButton value="Voltar" action="usuariolista" immediate="true" ajax="false"/>
+            </h:form>            
+
+        </ui:define>
+    </ui:composition>
+
+</html>

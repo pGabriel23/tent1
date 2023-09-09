@@ -30,16 +30,15 @@
                     </p:column>
 
                     <p:column headerText="senha">
-                        <h:outputText value="#{usr.senha}" rendered="#{usuarioControle.senhaToggle}"/>
+                        <h:outputText value="#{usr.senha}"/>
                     </p:column>
 
                     <p:column headerText="Operacoes">
                         <p:commandLink value="Excluir " action="#{usuarioControle.excluir(usr)}" ajax="false" immediate="true"/>
-                        <p:commandLink value=" Mostrar Senha" action="#{usuarioControle.senhaToggle()}" ajax="false" immediate="true"/>
                     </p:column>
 
                 </p:dataTable> 
-                <p:commandButton value="Cadastrar Novo Usuario" action="statusservicoedita" />
+                <p:commandButton value="Cadastrar Novo Usuario" action="usuarioedita" />
             </h:form>
 
         </ui:define>

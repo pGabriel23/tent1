@@ -4,7 +4,9 @@
  */
 package controle;
 
+import Converter.ConverterGererico;
 import entidades.Sistema;
+import facade.FornecedorFacade;
 import facade.SistemaFacade;
 import java.util.List;
 import javax.ejb.EJB;
@@ -22,6 +24,20 @@ public class SistemaControle {
     private Sistema sistema = new Sistema();
     @EJB
     private SistemaFacade sistemaFacade;
+    @EJB
+    private FornecedorFacade fornecedorFacade;
+    private ConverterGererico fornecedorConverter;
+
+    public ConverterGererico getFornecedorConverter() {
+        if (fornecedorConverter == null) {
+            fornecedorConverter = new ConverterGererico(fornecedorFacade);
+        }
+        return fornecedorConverter;
+    }
+
+    public void setFornecedorConverter(ConverterGererico fornecedorConverter) {
+        this.fornecedorConverter = fornecedorConverter;
+    }
 
     public List<Sistema> getListaSistema() {
         return sistemaFacade.listaTodos();

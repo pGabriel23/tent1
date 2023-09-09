@@ -4,12 +4,17 @@
  */
 package controle;
 
+import Converter.ConverterGererico;
 import entidades.Usuario;
+import facade.FuncionarioFacade;
+import facade.PermissaoFacade;
 import facade.UsuarioFacade;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -30,6 +35,34 @@ public class UsuarioControle {
     private Usuario usuario = new Usuario();
     @EJB
     private UsuarioFacade usuarioFacade;
+    @EJB
+    private PermissaoFacade permissaoFacade;
+    @EJB
+    private FuncionarioFacade funcionarioFacade;
+    private ConverterGererico funcionarioConverter;
+    private ConverterGererico permissaoConverter;
+
+    public ConverterGererico getFuncionarioConverter() {
+        if (funcionarioConverter == null) {
+            funcionarioConverter = new ConverterGererico(funcionarioFacade);
+        }
+        return funcionarioConverter;
+    }
+
+    public void setFuncionarioConverter(ConverterGererico funcionarioConverter) {
+        this.funcionarioConverter = funcionarioConverter;
+    }
+
+    public ConverterGererico getPermissaoConverter() {
+        if (permissaoConverter == null) {
+            permissaoConverter = new ConverterGererico(permissaoFacade);
+        }
+        return permissaoConverter;
+    }
+
+    public void setPermissaoConverter(ConverterGererico permissaoConverter) {
+        this.permissaoConverter = permissaoConverter;
+    }
 
     public List<Usuario> getListaUsuario() {
         return usuarioFacade.listaTodos();
@@ -44,24 +77,18 @@ public class UsuarioControle {
     }
 
     public String salvar() {
-        usuarioFacade.salvar(usuario);
-        usuario = new Usuario();
-        return "usuariolista";
+        if (usuarioFacade.buscaPorNome(usuario.getNome()).isEmpty()) {
+            usuarioFacade.salvar(usuario);
+            usuario = new Usuario();
+            return "usuariolista";
+        }
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario com esse nome já existe", ""));
+        return null;
     }
 
     public void excluir(Usuario usr) {
         usuarioFacade.remover(usr);
-    }
-
-//    PADRAO DEIXAR EM FALSE
-    private Boolean senhaToggle = false;
-
-    public Boolean getSenhaToggle() {
-        return senhaToggle;
-    }
-    
-    public void senhaToggle() {
-        senhaToggle = senhaToggle == false;
     }
 
 }

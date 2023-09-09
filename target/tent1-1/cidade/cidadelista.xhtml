@@ -14,11 +14,11 @@
                     <p:column headerText="ID" filterBy="#{cid.id}" filterMatchMode="contains">
                         #{cid.id}
                     </p:column>
-                    <p:column headerText="Nome" filterBy="#{cid.nome}" filterMatchMode="contains">
+                    <p:column headerText="Cidade" filterBy="#{cid.nome}" filterMatchMode="contains">
                         #{cid.nome}
                     </p:column>
-                    <p:column headerText="Estado" filterBy="#{cid.uf.nome}" filterMatchMode="contains">
-                        #{cid.uf.nome}
+                    <p:column headerText="UF" filterBy="#{cid.uf.uf}" filterMatchMode="contains">
+                        #{cid.uf.uf}
                     </p:column>
                     <p:column headerText="Operacoes">
                         <p:commandLink value="Excluir" action="#{cidadeControle.excluir(cid)}" ajax="false" immediate="true"/>

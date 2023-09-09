@@ -4,7 +4,10 @@
  */
 package controle;
 
+import Converter.ConverterGererico;
 import entidades.Filiais;
+import facade.CidadeFacade;
+import facade.EstadoFacade;
 import facade.FiliaisFacade;
 import java.util.List;
 import javax.ejb.EJB;
@@ -22,6 +25,34 @@ public class FiliaisControle {
     private Filiais filiais = new Filiais();
     @EJB
     private FiliaisFacade filiaisFacade;
+    @EJB
+    private EstadoFacade estadoFacade;
+    @EJB
+    private CidadeFacade cidadeFacade;
+    private ConverterGererico estadoConverter;
+    private ConverterGererico cidadeConverter;
+
+    public ConverterGererico getEstadoConverter() {
+        if (estadoConverter == null) {
+            estadoConverter = new ConverterGererico(estadoFacade);
+        }
+        return estadoConverter;
+    }
+
+    public void setEstadoConverter(ConverterGererico estadoConverter) {
+        this.estadoConverter = estadoConverter;
+    }
+
+    public ConverterGererico getCidadeConverter() {
+        if (cidadeConverter == null) {
+            cidadeConverter = new ConverterGererico(cidadeFacade);
+        }
+        return cidadeConverter;
+    }
+
+    public void setCidadeConverter(ConverterGererico cidadeConverter) {
+        this.cidadeConverter = cidadeConverter;
+    }
 
     public List<Filiais> getListaFiliais() {
         return filiaisFacade.listaTodos();

@@ -4,7 +4,9 @@
  */
 package controle;
 
+import Converter.ConverterGererico;
 import entidades.Funcionario;
+import facade.CidadeFacade;
 import facade.FuncionarioFacade;
 import java.util.List;
 import javax.ejb.EJB;
@@ -18,10 +20,24 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class FuncionarioControle {
-       
+
     private Funcionario funcionario = new Funcionario();
     @EJB
     private FuncionarioFacade funcionarioFacade;
+    @EJB
+    private CidadeFacade cidadeFacade;
+    private ConverterGererico cidadeConverter;
+
+    public ConverterGererico getCidadeConverter() {
+        if (cidadeConverter == null) {
+            cidadeConverter = new ConverterGererico(cidadeFacade);
+        }
+        return cidadeConverter;
+    }
+
+    public void setCidadeConverter(ConverterGererico cidadeConverter) {
+        this.cidadeConverter = cidadeConverter;
+    }
 
     public List<Funcionario> getListaFuncionario() {
         return funcionarioFacade.listaTodos();

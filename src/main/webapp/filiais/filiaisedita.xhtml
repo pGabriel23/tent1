@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+
+            <h:form>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="ID" for="id" />
+                    <p:inputText id="id" value="#{filiaisControle.filiais.id}" title="ID Filial" required="true"/>
+                    <p:outputLabel value="Gerente" for="ger" />
+                    <p:inputText id="ger" value="#{filiaisControle.filiais.gerente}" title="Gerente da filial" required="true"/>
+
+                    <p:outputLabel value="Escolher UF" for="uf" /> 
+                    <p:selectOneMenu id="uf" value="#{filiaisControle.filiais.estado}" converter="#{filiaisControle.estadoConverter}" >
+                        <f:selectItems value="#{estadoControle.listaEstado}"
+                                       var="ufItem"
+                                       itemLabel="${ufItem.uf}"
+                                       itemValue="#{ufItem}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Escolher Cidade" for="cid" /> 
+                    <p:selectOneMenu id="cid" value="#{filiaisControle.filiais.cidade}" converter="#{filiaisControle.cidadeConverter}" >
+                        <f:selectItems value="#{cidadeControle.listaCidade}"
+                                       var="cid"
+                                       itemLabel="${cid.nome}"
+                                       itemValue="#{cid}"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+                <br/>
+
+                <p:commandButton value="Salvar" action="#{filiaisControle.salvar()}" ajax="false" />
+                <p:commandButton value="Voltar" action="filiaislista" immediate="true" ajax="false"/>
+            </h:form>            
+
+        </ui:define>
+    </ui:composition>
+
+</html>

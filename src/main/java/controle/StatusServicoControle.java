@@ -4,8 +4,10 @@
  */
 package controle;
 
+import Converter.ConverterGererico;
 import entidades.StatusServico;
 import facade.StatusServicoFacade;
+import facade.VendaFacade;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -18,10 +20,24 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class StatusServicoControle {
-           
+
     private StatusServico statusServico = new StatusServico();
     @EJB
     private StatusServicoFacade statusServicoFacade;
+    @EJB
+    private VendaFacade vendaFacade;
+    private ConverterGererico vendaConverter;
+
+    public ConverterGererico getVendaConverter() {
+        if (vendaConverter == null) {
+            vendaConverter = new ConverterGererico(vendaFacade);
+        }
+        return vendaConverter;
+    }
+
+    public void setVendaConverter(ConverterGererico vendaConverter) {
+        this.vendaConverter = vendaConverter;
+    }
 
     public List<StatusServico> getListaStatusServico() {
         return statusServicoFacade.listaTodos();
@@ -38,7 +54,7 @@ public class StatusServicoControle {
     public String salvar() {
         statusServicoFacade.salvar(statusServico);
         statusServico = new StatusServico();
-        return "statusServicolista";
+        return "statusservicolista";
     }
 
     public void excluir(StatusServico ss) {

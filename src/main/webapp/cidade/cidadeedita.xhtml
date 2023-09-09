@@ -16,7 +16,7 @@
                     <p:outputLabel value="Nome" for="nome" />
                     <p:inputText id="nome" value="#{cidadeControle.cidade.nome}" title="Nome Cidade" required="true"/>
                     <p:outputLabel value="Escolher uf" for="uf" /> 
-                    <p:selectOneMenu id="uf" value="#{cidadeControle.cidade.uf}" >
+                    <p:selectOneMenu id="uf" value="#{cidadeControle.cidade.uf}" converter="#{cidadeControle.estadoConverter}" >
                         <f:selectItems value="#{estadoControle.listaEstado}"
                                        var="ufItem"
                                        itemLabel="${ufItem.uf}"

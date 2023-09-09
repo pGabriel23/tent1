@@ -26,11 +26,6 @@ public class EstadoControle {
     public List<Estado> getListaEstado() {
         return estadoFacade.listaTodos();
     }
-    
-    public Estado getUnicoEstado(){
-        List<Estado> todos = getListaEstado();
-        return todos.get(0);
-    }
 
     public Estado getEstado() {
         return estado;

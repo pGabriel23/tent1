@@ -31,14 +31,14 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Fornecedor.findById", query = "SELECT f FROM Fornecedor f WHERE f.id = :id"),
     @NamedQuery(name = "Fornecedor.findByNome", query = "SELECT f FROM Fornecedor f WHERE f.nome = :nome"),
     @NamedQuery(name = "Fornecedor.findByContato", query = "SELECT f FROM Fornecedor f WHERE f.contato = :contato")})
-public class Fornecedor implements Serializable {
+public class Fornecedor implements Serializable, ClassePai {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
@@ -55,21 +55,22 @@ public class Fornecedor implements Serializable {
     public Fornecedor() {
     }
 
-    public Fornecedor(Integer id) {
+    public Fornecedor(Long id) {
         this.id = id;
     }
 
-    public Fornecedor(Integer id, String nome, String contato) {
+    public Fornecedor(Long id, String nome, String contato) {
         this.id = id;
         this.nome = nome;
         this.contato = contato;
     }
 
-    public Integer getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -121,5 +122,5 @@ public class Fornecedor implements Serializable {
     public String toString() {
         return "entidades.Fornecedor[ id=" + id + " ]";
     }
-    
+
 }

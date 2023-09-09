@@ -29,14 +29,14 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Filiais.findAll", query = "SELECT f FROM Filiais f"),
     @NamedQuery(name = "Filiais.findById", query = "SELECT f FROM Filiais f WHERE f.id = :id"),
     @NamedQuery(name = "Filiais.findByGerente", query = "SELECT f FROM Filiais f WHERE f.gerente = :gerente")})
-public class Filiais implements Serializable {
+public class Filiais implements Serializable, ClassePai {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
@@ -52,20 +52,21 @@ public class Filiais implements Serializable {
     public Filiais() {
     }
 
-    public Filiais(Integer id) {
+    public Filiais(Long id) {
         this.id = id;
     }
 
-    public Filiais(Integer id, String gerente) {
+    public Filiais(Long id, String gerente) {
         this.id = id;
         this.gerente = gerente;
     }
 
-    public Integer getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -117,5 +118,5 @@ public class Filiais implements Serializable {
     public String toString() {
         return "entidades.Filiais[ id=" + id + " ]";
     }
-    
+
 }

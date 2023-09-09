@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package entidades;
- 
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -32,14 +32,14 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Cidade.findAll", query = "SELECT c FROM Cidade c"),
     @NamedQuery(name = "Cidade.findById", query = "SELECT c FROM Cidade c WHERE c.id = :id"),
     @NamedQuery(name = "Cidade.findByNome", query = "SELECT c FROM Cidade c WHERE c.nome = :nome")})
-public class Cidade implements Serializable {
+public class Cidade implements Serializable, ClassePai {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
@@ -58,20 +58,21 @@ public class Cidade implements Serializable {
     public Cidade() {
     }
 
-    public Cidade(Integer id) {
+    public Cidade(Long id) {
         this.id = id;
     }
 
-    public Cidade(Integer id, String nome) {
+    public Cidade(Long id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public Integer getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -106,7 +107,7 @@ public class Cidade implements Serializable {
     public void setUf(Estado uf) {
         this.uf = uf;
     }
-    
+
     public List<Funcionario> getFuncionarioList() {
         return funcionarioList;
     }
@@ -139,5 +140,5 @@ public class Cidade implements Serializable {
     public String toString() {
         return "entidades.Cidade[ id=" + id + " ]";
     }
-    
+
 }

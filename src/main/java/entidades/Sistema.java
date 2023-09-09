@@ -37,14 +37,14 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Sistema.findByModulo", query = "SELECT s FROM Sistema s WHERE s.modulo = :modulo"),
     @NamedQuery(name = "Sistema.findByModulo1", query = "SELECT s FROM Sistema s WHERE s.modulo1 = :modulo1"),
     @NamedQuery(name = "Sistema.findByCodigo", query = "SELECT s FROM Sistema s WHERE s.codigo = :codigo")})
-public class Sistema implements Serializable {
+public class Sistema implements Serializable, ClassePai {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Column(name = "preco")
@@ -81,11 +81,11 @@ public class Sistema implements Serializable {
     public Sistema() {
     }
 
-    public Sistema(Integer id) {
+    public Sistema(Long id) {
         this.id = id;
     }
 
-    public Sistema(Integer id, double preco, String inversor, int inversor1, String modulo, int modulo1, String codigo) {
+    public Sistema(Long id, double preco, String inversor, int inversor1, String modulo, int modulo1, String codigo) {
         this.id = id;
         this.preco = preco;
         this.inversor = inversor;
@@ -95,11 +95,12 @@ public class Sistema implements Serializable {
         this.codigo = codigo;
     }
 
-    public Integer getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -191,5 +192,5 @@ public class Sistema implements Serializable {
     public String toString() {
         return "entidades.Sistema[ id=" + id + " ]";
     }
-    
+
 }

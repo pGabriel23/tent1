@@ -33,14 +33,14 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "StatusServico.findByInstalacaoIniciada", query = "SELECT s FROM StatusServico s WHERE s.instalacaoIniciada = :instalacaoIniciada"),
     @NamedQuery(name = "StatusServico.findByInstalacaoConcluida", query = "SELECT s FROM StatusServico s WHERE s.instalacaoConcluida = :instalacaoConcluida"),
     @NamedQuery(name = "StatusServico.findBySegundaParcela", query = "SELECT s FROM StatusServico s WHERE s.segundaParcela = :segundaParcela")})
-public class StatusServico implements Serializable {
+public class StatusServico implements Serializable, ClassePai {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Column(name = "entrada")
     @Temporal(TemporalType.DATE)
     private Date entrada;
@@ -60,15 +60,16 @@ public class StatusServico implements Serializable {
     public StatusServico() {
     }
 
-    public StatusServico(Integer id) {
+    public StatusServico(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -136,5 +137,5 @@ public class StatusServico implements Serializable {
     public String toString() {
         return "entidades.StatusServico[ id=" + id + " ]";
     }
-    
+
 }

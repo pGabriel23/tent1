@@ -31,14 +31,14 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Estado.findById", query = "SELECT e FROM Estado e WHERE e.id = :id"),
     @NamedQuery(name = "Estado.findByNome", query = "SELECT e FROM Estado e WHERE e.nome = :nome"),
     @NamedQuery(name = "Estado.findByUf", query = "SELECT e FROM Estado e WHERE e.uf = :uf")})
-public class Estado implements Serializable {
+public class Estado implements Serializable, ClassePai {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
@@ -59,21 +59,22 @@ public class Estado implements Serializable {
     public Estado() {
     }
 
-    public Estado(Integer id) {
+    public Estado(Long id) {
         this.id = id;
     }
 
-    public Estado(Integer id, String nome, String uf) {
+    public Estado(Long id, String nome, String uf) {
         this.id = id;
         this.nome = nome;
         this.uf = uf;
     }
 
-    public Integer getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -141,5 +142,5 @@ public class Estado implements Serializable {
     public String toString() {
         return "entidades.Estado[ id=" + id + " ]";
     }
-    
+
 }

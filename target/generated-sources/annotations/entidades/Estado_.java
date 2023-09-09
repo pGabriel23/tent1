@@ -8,7 +8,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-08-21T10:32:02")
+@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-09-09T17:24:52")
 @StaticMetamodel(Estado.class)
 public class Estado_ { 
 
@@ -17,6 +17,6 @@ public class Estado_ {
     public static volatile SingularAttribute<Estado, String> uf;
     public static volatile ListAttribute<Estado, Filiais> filiaisList;
     public static volatile SingularAttribute<Estado, String> nome;
-    public static volatile SingularAttribute<Estado, Integer> id;
+    public static volatile SingularAttribute<Estado, Long> id;
 
 }

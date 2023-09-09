@@ -33,14 +33,14 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.id = :id"),
     @NamedQuery(name = "Cliente.findByPrimeiroNome", query = "SELECT c FROM Cliente c WHERE c.primeiroNome = :primeiroNome"),
     @NamedQuery(name = "Cliente.findBySegundoNome", query = "SELECT c FROM Cliente c WHERE c.segundoNome = :segundoNome")})
-public class Cliente implements Serializable {
+public class Cliente implements Serializable, ClassePai {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
@@ -63,21 +63,22 @@ public class Cliente implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(Integer id) {
+    public Cliente(Long id) {
         this.id = id;
     }
 
-    public Cliente(Integer id, String primeiroNome, String segundoNome) {
+    public Cliente(Long id, String primeiroNome, String segundoNome) {
         this.id = id;
         this.primeiroNome = primeiroNome;
         this.segundoNome = segundoNome;
     }
 
-    public Integer getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -145,5 +146,5 @@ public class Cliente implements Serializable {
     public String toString() {
         return "entidades.Cliente[ id=" + id + " ]";
     }
-    
+
 }

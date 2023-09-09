@@ -30,14 +30,14 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id"),
     @NamedQuery(name = "Usuario.findByNome", query = "SELECT u FROM Usuario u WHERE u.nome = :nome"),
     @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha")})
-public class Usuario implements Serializable {
+public class Usuario implements Serializable, ClassePai {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
@@ -54,25 +54,26 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "permissao", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Permissao permissao;
-    
+
     public Usuario() {
     }
 
-    public Usuario(Integer id) {
+    public Usuario(Long id) {
         this.id = id;
     }
 
-    public Usuario(Integer id, String nome, String senha) {
+    public Usuario(Long id, String nome, String senha) {
         this.id = id;
         this.nome = nome;
         this.senha = senha;
     }
 
-    public Integer getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -132,5 +133,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "entidades.Usuario[ id=" + id + " ]";
     }
-    
+
 }

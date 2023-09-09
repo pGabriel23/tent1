@@ -37,14 +37,14 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Venda.findByPreco", query = "SELECT v FROM Venda v WHERE v.preco = :preco"),
     @NamedQuery(name = "Venda.findByData", query = "SELECT v FROM Venda v WHERE v.data = :data"),
     @NamedQuery(name = "Venda.findByVendedor", query = "SELECT v FROM Venda v WHERE v.vendedor = :vendedor")})
-public class Venda implements Serializable {
+public class Venda implements Serializable, ClassePai {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Column(name = "preco")
@@ -71,22 +71,23 @@ public class Venda implements Serializable {
     public Venda() {
     }
 
-    public Venda(Integer id) {
+    public Venda(Long id) {
         this.id = id;
     }
 
-    public Venda(Integer id, double preco, Date data, String vendedor) {
+    public Venda(Long id, double preco, Date data, String vendedor) {
         this.id = id;
         this.preco = preco;
         this.data = data;
         this.vendedor = vendedor;
     }
 
-    public Integer getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -162,5 +163,5 @@ public class Venda implements Serializable {
     public String toString() {
         return "entidades.Venda[ id=" + id + " ]";
     }
-    
+
 }

@@ -38,14 +38,14 @@ import javax.persistence.Table;
     @NamedQuery(name = "Permissao.findByStatus_servico", query = "SELECT p FROM Permissao p WHERE p.status_servico = :status_servico"),
     @NamedQuery(name = "Permissao.findByUsuario", query = "SELECT p FROM Permissao p WHERE p.usuario = :usuario"),
     @NamedQuery(name = "Permissao.findByVenda", query = "SELECT p FROM Permissao p WHERE p.venda = :venda")})
-public class Permissao implements Serializable {
+public class Permissao implements Serializable, ClassePai {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Column(name = "cidade")
     private Boolean cidade;
     @Column(name = "cliente")
@@ -138,15 +138,16 @@ public class Permissao implements Serializable {
     public Permissao() {
     }
 
-    public Permissao(Integer id) {
+    public Permissao(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

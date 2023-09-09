@@ -34,14 +34,14 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Funcionario.findByPrimeiroNome", query = "SELECT f FROM Funcionario f WHERE f.primeiroNome = :primeiroNome"),
     @NamedQuery(name = "Funcionario.findBySegundoNome", query = "SELECT f FROM Funcionario f WHERE f.segundoNome = :segundoNome"),
     @NamedQuery(name = "Funcionario.findByFuncao", query = "SELECT f FROM Funcionario f WHERE f.funcao = :funcao")})
-public class Funcionario implements Serializable {
+public class Funcionario implements Serializable, ClassePai {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
@@ -66,22 +66,23 @@ public class Funcionario implements Serializable {
     public Funcionario() {
     }
 
-    public Funcionario(Integer id) {
+    public Funcionario(Long id) {
         this.id = id;
     }
 
-    public Funcionario(Integer id, String primeiroNome, String segundoNome, String funcao) {
+    public Funcionario(Long id, String primeiroNome, String segundoNome, String funcao) {
         this.id = id;
         this.primeiroNome = primeiroNome;
         this.segundoNome = segundoNome;
         this.funcao = funcao;
     }
 
-    public Integer getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -149,5 +150,5 @@ public class Funcionario implements Serializable {
     public String toString() {
         return "entidades.Funcionario[ id=" + id + " ]";
     }
-    
+
 }

@@ -14,17 +14,18 @@ import javax.persistence.PersistenceContext;
  * @author paulo
  */
 @Stateless
-public class CidadeFacade extends AbstractFacade<Cidade>{
-    @PersistenceContext(unitName="com.mycompany_tent1_war_1PU")
+public class CidadeFacade extends AbstractFacade<Cidade> {
+
+    @PersistenceContext(unitName = "com.mycompany_tent1_war_1PU")
     private EntityManager em;
-    
+
     @Override
-    protected EntityManager getEntityManager(){
+    protected EntityManager getEntityManager() {
         return em;
     }
-    
-    public CidadeFacade(){
+
+    public CidadeFacade() {
         super(Cidade.class);
     }
-    
+
 }

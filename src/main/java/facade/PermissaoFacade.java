@@ -14,18 +14,18 @@ import javax.persistence.PersistenceContext;
  * @author paulo
  */
 @Stateless
-public class PermissaoFacade extends AbstractFacade<Permissao>{
-    
-    @PersistenceContext(unitName="com.mycompany_tent1_war_1PU")
+public class PermissaoFacade extends AbstractFacade<Permissao> {
+
+    @PersistenceContext(unitName = "com.mycompany_tent1_war_1PU")
     private EntityManager em;
-    
+
     @Override
-    protected EntityManager getEntityManager(){
+    protected EntityManager getEntityManager() {
         return em;
     }
-    
-    public PermissaoFacade(){
+
+    public PermissaoFacade() {
         super(Permissao.class);
     }
-    
+
 }

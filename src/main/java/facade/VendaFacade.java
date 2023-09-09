@@ -15,6 +15,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class VendaFacade extends AbstractFacade<Venda> {
+
     @PersistenceContext(unitName = "com.mycompany_tent1_war_1PU")
     private EntityManager em;
 

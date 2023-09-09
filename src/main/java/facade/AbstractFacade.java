@@ -4,6 +4,7 @@
  */
 package facade;
 
+import entidades.ClassePai;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -34,15 +35,20 @@ public abstract class AbstractFacade<T> {
         return getEntityManager().find(entityClass, id);
     }
 
-    public List<T> listaTodos() {
-        Query q = getEntityManager().createNamedQuery(entityClass.getSimpleName() + ".findAll");
+    public List<T> buscaPorNome(String nome) {
+        Query q = getEntityManager().createQuery("SELECT u FROM " + entityClass.getSimpleName() + " u WHERE u.nome = :nome");
+        q.setParameter("nome", nome);
         return q.getResultList();
     }
 
-    public List<T> findAll() {
-        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-        cq.select(cq.from(entityClass));
-        return getEntityManager().createQuery(cq).getResultList();
+    public List<T> queryTodos() {
+        Query q = getEntityManager().createQuery("SELECT c FROM " + entityClass.getSimpleName() + " c");
+        return q.getResultList();
+    }
+
+    public List<T> listaTodos() {
+        Query q = getEntityManager().createNamedQuery(entityClass.getSimpleName() + ".findAll");
+        return q.getResultList();
     }
 
 }

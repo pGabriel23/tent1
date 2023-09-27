@@ -9,9 +9,9 @@
     </h:head>
     <h:body>
         <p:layout fullPage="true">
+
             <p:layoutUnit position="west" size="180">
                 <h:form>
-
                     <p:menu style="width: 160px">
 
                         <p:submenu label="Cadastros" rendered="true">
@@ -32,6 +32,10 @@
                         </p:submenu>
 
                         <p:submenu label="Relatorios" rendered="true">
+
+                        </p:submenu>
+
+                        <p:submenu label="Sessão" rendered="true">
                             <p:menuitem value="Login" ajax="false" outcome="/login" rendered="#{!loginControle.isLogged}"/>
                             <p:menuitem value="Logout" ajax="false" outcome="/logout" rendered="#{loginControle.isLogged}"/>
                         </p:submenu>

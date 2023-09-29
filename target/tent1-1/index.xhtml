@@ -10,9 +10,9 @@
     <h:body>
         <p:layout fullPage="true">
 
-            <p:layoutUnit position="west" size="180">
+            <p:layoutUnit position="west" size="205">
                 <h:form>
-                    <p:menu style="width: 160px">
+                    <p:menu style="width: 180px">
 
                         <p:submenu label="Cadastros" rendered="true">
                             <p:menuitem value="cidades" ajax="false" outcome="/cidade/cidadelista"/>
@@ -32,7 +32,15 @@
                         </p:submenu>
 
                         <p:submenu label="Relatorios" rendered="true">
-
+                            <p:menuitem value="cidades" ajax="false" outcome="/cidade/cidadelista"/>
+                            <p:menuitem value="clientes" ajax="false" outcome="/cliente/clientelista"/>
+                            <p:menuitem value="estados" ajax="false" outcome="/estado/estadolista"/>
+                            <p:menuitem value="filiais" ajax="false" outcome="/filiais/filiaislista"/>
+                            <p:menuitem value="fornecedores" ajax="false" outcome="/fornecedor/fornecedorlista"/>
+                            <p:menuitem value="funcionarios" ajax="false" outcome="/funcionario/funcionariolista"/>
+                            <p:menuitem value="permissões" ajax="false" outcome="/permissao/permissaolista"/>
+                            <p:menuitem value="sistemas" ajax="false" outcome="/sistema/sistemalista"/>
+                            <p:menuitem value="usuario" ajax="false" outcome="/usuario/usuariolista"/>
                         </p:submenu>
 
                         <p:submenu label="Sessão" rendered="true">
@@ -46,8 +54,6 @@
 
             <p:layoutUnit position="center">
                 <ui:insert id="corpo" name="body">
-                    <p:outputLabel value=" Usuario Logado = #{loginControle.usuarioAtual.nome}" rendered="#{loginControle.isLogged}"/>
-                    <br/>
                     Seja Bem vindo!
                 </ui:insert>
             </p:layoutUnit>

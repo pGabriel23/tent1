@@ -10,8 +10,10 @@
 
             <p:messages />
             <h:form>
-                <p:panelGrid columns="2">
+                <p:panelGrid>
                     Usuario Logado = #{loginControle.usuarioAtual.nome}
+                    <br/>
+                    Permissão = #{loginControle.usuarioAtual.permissao.id}
                 </p:panelGrid>
                 <br/>
                 <p:commandButton value="Logout" action="#{loginControle.logout()}" ajax="false" />

@@ -22,20 +22,25 @@
                     <p:column headerText="segundoNome" filterBy="#{fun.segundoNome}" filterMatchMode="contains">
                         #{fun.segundoNome}
                     </p:column>
-                    
+
                     <p:column headerText="funcao" filterBy="#{fun.funcao}" filterMatchMode="contains">
                         #{fun.funcao}
                     </p:column>
-                    
+
                     <p:column headerText="cidade" filterBy="#{fun.cidade.nome}" filterMatchMode="contains">
                         #{fun.cidade.nome}-#{fun.cidade.uf.uf}
                     </p:column>
-                    
+
                     <p:column headerText="Operacoes">
                         <p:commandLink value="Excluir" action="#{funcionarioControle.excluir(fun)}" ajax="false" immediate="true"/>
                     </p:column>
 
                 </p:dataTable> 
+                <p:commandButton value="Imprimir relatório" 
+                                 action="#{funcionarioControle.relatorioFuncionario()}" 
+                                 icon="pi pi-print" 
+                                 ajax="false" 
+                                 onclick="this.form.target = '_blank';"/>
                 <p:commandButton value="Cadastrar Funcionario" action="funcionarioedita" />
             </h:form>
 

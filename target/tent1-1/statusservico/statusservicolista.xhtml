@@ -22,24 +22,29 @@
                     <p:column headerText="instalacaoIniciada" filterBy="#{ss.instalacaoIniciada}" filterMatchMode="contains">
                         #{ss.instalacaoIniciada}
                     </p:column>
-                    
+
                     <p:column headerText="instalacaoConcluida" filterBy="#{ss.instalacaoConcluida}" filterMatchMode="contains">
                         #{ss.instalacaoConcluida}
                     </p:column>
-                    
+
                     <p:column headerText="segundaParcela" filterBy="#{ss.segundaParcela}" filterMatchMode="contains">
                         #{ss.segundaParcela}
                     </p:column>
-                    
+
                     <p:column headerText="venda" filterBy="#{ss.venda.cliente.primeiroNome}" filterMatchMode="contains">
                         #{ss.venda.cliente.primeiroNome}  #{ss.venda.cliente.segundoNome}
                     </p:column>
-                    
+
                     <p:column headerText="Operacoes">
                         <p:commandLink value="Excluir" action="#{statusServicoControle.excluir(ss)}" ajax="false" immediate="true"/>
                     </p:column>
 
                 </p:dataTable> 
+                <p:commandButton value="Imprimir relatório" 
+                                 action="#{statusServicoControle.relatorioStatusServico()}" 
+                                 icon="pi pi-print" 
+                                 ajax="false" 
+                                 onclick="this.form.target = '_blank';"/>
                 <p:commandButton value="Atualizar Status de Servico" action="statusservicoedita" />
             </h:form>
 

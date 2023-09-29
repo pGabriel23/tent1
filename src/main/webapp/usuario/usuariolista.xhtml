@@ -9,7 +9,7 @@
         <ui:define name="body">
 
             <h:form>
-                
+
                 <p:dataTable value="#{usuarioControle.listaUsuario}" var="usr">
 
                     <p:column headerText="ID" filterBy="#{usr.id}" filterMatchMode="contains">
@@ -38,6 +38,11 @@
                     </p:column>
 
                 </p:dataTable> 
+                <p:commandButton value="Imprimir relatório" 
+                                 action="#{usuarioControle.relatorioUsuario()}" 
+                                 icon="pi pi-print" 
+                                 ajax="false" 
+                                 onclick="this.form.target = '_blank';"/>
                 <p:commandButton value="Cadastrar Novo Usuario" action="usuarioedita" />
             </h:form>
 

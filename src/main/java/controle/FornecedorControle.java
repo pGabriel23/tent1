@@ -6,6 +6,7 @@ package controle;
 
 import entidades.Fornecedor;
 import facade.FornecedorFacade;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -25,6 +26,11 @@ public class FornecedorControle {
 
     public List<Fornecedor> getListaFornecedor() {
         return fornecedorFacade.listaTodos();
+    }
+
+    public void relatorioFornecedor() {
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-fornecedor", parametros, fornecedorFacade.listaTodos());
     }
 
     public Fornecedor getFornecedor() {

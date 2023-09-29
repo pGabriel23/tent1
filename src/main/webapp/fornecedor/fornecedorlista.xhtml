@@ -22,12 +22,17 @@
                     <p:column headerText="contato" filterBy="#{for.contato}" filterMatchMode="contains">
                         #{for.contato}
                     </p:column>
-                    
+
                     <p:column headerText="Operacoes">
                         <p:commandLink value="Excluir" action="#{fornecedorControle.excluir(for)}" ajax="false" immediate="true"/>
                     </p:column>
 
                 </p:dataTable> 
+                <p:commandButton value="Imprimir relatório" 
+                                 action="#{fornecedorControle.relatorioFornecedor()}" 
+                                 icon="pi pi-print" 
+                                 ajax="false" 
+                                 onclick="this.form.target = '_blank';"/>
                 <p:commandButton value="Cadastrar Fornecedor" action="fornecedoredita" />
             </h:form>
 

@@ -9,6 +9,7 @@ import entidades.Cliente;
 import facade.CidadeFacade;
 import facade.ClienteFacade;
 import facade.EstadoFacade;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -56,6 +57,11 @@ public class ClienteControle {
 
     public List<Cliente> getListaCliente() {
         return clienteFacade.listaTodos();
+    }
+
+    public void relatorioCliente() {
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-cliente", parametros, clienteFacade.listaTodos());
     }
 
     public Cliente getCliente() {

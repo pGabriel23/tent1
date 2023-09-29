@@ -8,6 +8,7 @@ import Converter.ConverterGererico;
 import entidades.Sistema;
 import facade.FornecedorFacade;
 import facade.SistemaFacade;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -41,6 +42,11 @@ public class SistemaControle {
 
     public List<Sistema> getListaSistema() {
         return sistemaFacade.listaTodos();
+    }
+
+    public void relatorioSistema() {
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-sistema", parametros, sistemaFacade.listaTodos());
     }
 
     public Sistema getSistema() {

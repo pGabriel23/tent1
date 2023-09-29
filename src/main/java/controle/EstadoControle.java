@@ -6,6 +6,7 @@ package controle;
 
 import entidades.Estado;
 import facade.EstadoFacade;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -25,6 +26,11 @@ public class EstadoControle {
 
     public List<Estado> getListaEstado() {
         return estadoFacade.listaTodos();
+    }
+
+    public void relatorioEstado() {
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-estado", parametros, estadoFacade.listaTodos());
     }
 
     public Estado getEstado() {

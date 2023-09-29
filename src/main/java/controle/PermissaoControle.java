@@ -6,6 +6,7 @@ package controle;
 
 import entidades.Permissao;
 import facade.PermissaoFacade;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -25,6 +26,11 @@ public class PermissaoControle {
 
     public List<Permissao> getListaPermissao() {
         return permissaoFacade.listaTodos();
+    }
+
+    public void relatorioPermissao() {
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-permissao", parametros, permissaoFacade.listaTodos());
     }
 
     public Permissao getPermissao() {

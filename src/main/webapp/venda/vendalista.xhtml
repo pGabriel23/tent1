@@ -22,24 +22,29 @@
                     <p:column headerText="cliente" filterBy="#{vnd.cliente}" filterMatchMode="contains">
                         #{vnd.cliente.primeiroNome} #{vnd.cliente.segundoNome}
                     </p:column>
-                    
+
                     <p:column headerText="sistema" filterBy="#{vnd.sistema.codigo}" filterMatchMode="contains">
                         #{vnd.sistema.codigo}
                     </p:column>
-                    
+
                     <p:column headerText="vendedor" filterBy="#{vnd.vendedor}" filterMatchMode="contains">
                         #{vnd.vendedor}
                     </p:column>
-                    
+
                     <p:column headerText="data" filterBy="#{vnd.data}" filterMatchMode="contains">
                         #{vnd.data}
                     </p:column>
-                    
+
                     <p:column headerText="Operacoes">
                         <p:commandLink value="Excluir" action="#{vendaControle.excluir(vnd)}" ajax="false" immediate="true"/>
                     </p:column>
 
                 </p:dataTable> 
+                <p:commandButton value="Imprimir relatório" 
+                                 action="#{vendaControle.relatorioVenda()}" 
+                                 icon="pi pi-print" 
+                                 ajax="false" 
+                                 onclick="this.form.target = '_blank';"/>
                 <p:commandButton value="Registrar Nova Venda" action="vendaedita" />
             </h:form>
 

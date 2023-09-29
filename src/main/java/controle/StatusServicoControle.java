@@ -8,6 +8,7 @@ import Converter.ConverterGererico;
 import entidades.StatusServico;
 import facade.StatusServicoFacade;
 import facade.VendaFacade;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -41,6 +42,11 @@ public class StatusServicoControle {
 
     public List<StatusServico> getListaStatusServico() {
         return statusServicoFacade.listaTodos();
+    }
+
+    public void relatorioStatusServico() {
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-statusservico", parametros, statusServicoFacade.listaTodos());
     }
 
     public StatusServico getStatusServico() {

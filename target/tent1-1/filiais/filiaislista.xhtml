@@ -22,7 +22,7 @@
                     <p:column headerText="cidade" filterBy="#{fil.cidade.nome}" filterMatchMode="contains">
                         #{fil.cidade.nome}
                     </p:column>
-                    
+
                     <p:column headerText="UF" filterBy="#{fil.estado.uf}" filterMatchMode="contains">
                         #{fil.estado.uf}
                     </p:column>
@@ -32,6 +32,11 @@
                     </p:column>
 
                 </p:dataTable> 
+                <p:commandButton value="Imprimir relatório" 
+                                 action="#{filiaisControle.relatorioFiliais()}" 
+                                 icon="pi pi-print" 
+                                 ajax="false" 
+                                 onclick="this.form.target = '_blank';"/>
                 <p:commandButton value="Cadastrar Filial" action="filiaisedita" />
             </h:form>
 

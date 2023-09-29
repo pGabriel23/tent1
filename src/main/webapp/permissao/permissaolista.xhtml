@@ -64,6 +64,11 @@
                     </p:column>
 
                 </p:dataTable> 
+                <p:commandButton value="Imprimir relatório" 
+                                 action="#{permissaoControle.relatorioPermissao()}" 
+                                 icon="pi pi-print" 
+                                 ajax="false" 
+                                 onclick="this.form.target = '_blank';"/>
                 <p:commandButton value="Cadastrar Permissões" action="permissaoedita" />
             </h:form>
 

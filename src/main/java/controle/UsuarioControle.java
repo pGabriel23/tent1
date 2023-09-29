@@ -9,6 +9,7 @@ import entidades.Usuario;
 import facade.FuncionarioFacade;
 import facade.PermissaoFacade;
 import facade.UsuarioFacade;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -66,6 +67,11 @@ public class UsuarioControle {
 
     public List<Usuario> getListaUsuario() {
         return usuarioFacade.listaTodos();
+    }
+
+    public void relatorioUsuario() {
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-usuario", parametros, usuarioFacade.listaTodos());
     }
 
     public Usuario getUsuario() {

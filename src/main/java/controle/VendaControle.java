@@ -9,6 +9,7 @@ import entidades.Venda;
 import facade.ClienteFacade;
 import facade.SistemaFacade;
 import facade.VendaFacade;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -56,6 +57,11 @@ public class VendaControle {
 
     public List<Venda> getListaVenda() {
         return vendaFacade.listaTodos();
+    }
+
+    public void relatorioVenda() {
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-venda", parametros, vendaFacade.listaTodos());
     }
 
     public Venda getVenda() {

@@ -8,6 +8,7 @@ import Converter.ConverterGererico;
 import entidades.Funcionario;
 import facade.CidadeFacade;
 import facade.FuncionarioFacade;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -41,6 +42,11 @@ public class FuncionarioControle {
 
     public List<Funcionario> getListaFuncionario() {
         return funcionarioFacade.listaTodos();
+    }
+
+    public void relatorioFuncionario() {
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-funcionario", parametros, funcionarioFacade.listaTodos());
     }
 
     public Funcionario getFuncionario() {

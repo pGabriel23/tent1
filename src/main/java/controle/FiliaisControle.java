@@ -9,6 +9,7 @@ import entidades.Filiais;
 import facade.CidadeFacade;
 import facade.EstadoFacade;
 import facade.FiliaisFacade;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -56,6 +57,11 @@ public class FiliaisControle {
 
     public List<Filiais> getListaFiliais() {
         return filiaisFacade.listaTodos();
+    }
+
+    public void relatorioFiliais() {
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-filiais", parametros, filiaisFacade.listaTodos());
     }
 
     public Filiais getFiliais() {

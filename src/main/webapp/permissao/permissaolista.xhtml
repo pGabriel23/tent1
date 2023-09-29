@@ -59,6 +59,10 @@
                         <p:selectBooleanCheckbox value="#{per.venda}" disabled="true"/>
                     </p:column>
 
+                    <p:column headerText="Relatorio" filterBy="#{per.relatorio}" filterMatchMode="contains">
+                        <p:selectBooleanCheckbox value="#{per.relatorio}" disabled="true"/>
+                    </p:column>
+
                     <p:column headerText="Operacoes">
                         <p:commandLink value="Excluir" action="#{permissaoControle.excluir(per)}" ajax="false" immediate="true"/>
                     </p:column>

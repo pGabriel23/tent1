@@ -68,6 +68,8 @@ public class Permissao implements Serializable, ClassePai {
     private Boolean usuario;
     @Column(name = "venda")
     private Boolean venda;
+    @Column(name = "relatorio")
+    private Boolean relatorio;
 
     public Boolean getFornecedor() {
         return fornecedor;
@@ -132,6 +134,17 @@ public class Permissao implements Serializable, ClassePai {
     public void setFiliais(Boolean filiais) {
         this.filiais = filiais;
     }
+
+    public Boolean getRelatorio() {
+        return relatorio;
+    }
+
+    public void setRelatorio(Boolean relatorio) {
+        this.relatorio = relatorio;
+    }
+    
+    
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "permissao")
     private List<Usuario> usuarioList;
 

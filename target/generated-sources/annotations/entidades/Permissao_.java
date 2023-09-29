@@ -6,7 +6,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-09-29T03:05:08")
+@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-09-29T15:41:44")
 @StaticMetamodel(Permissao.class)
 public class Permissao_ { 
 
@@ -23,5 +23,6 @@ public class Permissao_ {
     public static volatile SingularAttribute<Permissao, Long> id;
     public static volatile SingularAttribute<Permissao, Boolean> fornecedor;
     public static volatile SingularAttribute<Permissao, Boolean> funcionario;
+    public static volatile SingularAttribute<Permissao, Boolean> relatorio;
 
 }

@@ -8,6 +8,7 @@ import Converter.ConverterGererico;
 import entidades.Cidade;
 import facade.CidadeFacade;
 import facade.EstadoFacade;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -35,6 +36,11 @@ public class CidadeControle {
         return estadoConverter;
     }
 
+    public void relatorioCidade(){
+        HashMap parametros = new HashMap();    
+        relatorio.relatorio.imprimeRelatorio("/relatorio-cidade", parametros, cidadeFacade.listaTodos());
+    }    
+    
     public void setEstadoConverter(ConverterGererico estadoConverter) {
         this.estadoConverter = estadoConverter;
     }

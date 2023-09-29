@@ -7,9 +7,13 @@
 
     <ui:composition template="/index.xhtml">
         <ui:define name="body">
-  
+
             <h:form>
-                <p:dataTable value="#{clienteControle.listaCliente}" var="cte">
+                <p:dataTable value="#{clienteControle.listaCliente}" var="cte"  
+                             paginator="true" paginatorPosition="both" rows="10"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="5,10,{ShowAll|'All'}">
 
                     <p:column headerText="ID" filterBy="#{cte.id}" filterMatchMode="contains">
                         #{cte.id}
@@ -31,8 +35,18 @@
                         #{cte.estado.uf}
                     </p:column>
 
-                    <p:column headerText="Operacoes">
-                        <p:commandLink value="Excluir" action="#{clienteControle.excluir(cte)}" ajax="false" immediate="true"/>
+                    <p:column headerText="Operações">
+                        <p:commandButton value="Excluir"
+                                         icon="pi pi-trash"
+                                         action="#{clienteControle.excluir(cte)}" 
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Editar"
+                                         icon="pi pi-pencil"
+                                         action="clienteedita"
+                                         actionListener="#{clienteControle.edita(cte)}" 
+                                         ajax="false" 
+                                         immediate="true"/>
                     </p:column>
 
                 </p:dataTable> 
@@ -41,7 +55,7 @@
                                  icon="pi pi-print" 
                                  ajax="false" 
                                  onclick="this.form.target = '_blank';"/>
-                <p:commandButton value="Cadastrar Cliente" action="clienteedita" />
+                <p:commandButton value="Cadastrar Cliente" action="#{clienteControle.novoCliente()}" />
             </h:form>
 
         </ui:define>

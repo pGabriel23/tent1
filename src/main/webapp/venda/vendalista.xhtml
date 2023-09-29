@@ -3,13 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/index.xhtml">
         <ui:define name="body">
 
             <h:form>
-                <p:dataTable value="#{vendaControle.listaVenda}" var="vnd">
+                <p:dataTable value="#{vendaControle.listaVenda}" var="vnd"
+                             paginator="true" paginatorPosition="both" rows="10"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="5,10,{ShowAll|'All'}">
 
                     <p:column headerText="ID" filterBy="#{vnd.id}" filterMatchMode="contains">
                         #{vnd.id}
@@ -32,11 +37,23 @@
                     </p:column>
 
                     <p:column headerText="data" filterBy="#{vnd.data}" filterMatchMode="contains">
-                        #{vnd.data}
+                        <h:outputText value="#{vnd.data}" >
+                            <f:convertDateTime locale="pt-BR" pattern="dd/MMM/yyyy" />
+                        </h:outputText>
                     </p:column>
 
                     <p:column headerText="Operacoes">
-                        <p:commandLink value="Excluir" action="#{vendaControle.excluir(vnd)}" ajax="false" immediate="true"/>
+                        <p:commandButton value="Excluir"
+                                         icon="pi pi-trash"
+                                         action="#{vendaControle.excluir(vnd)}" 
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Editar"
+                                         icon="pi pi-pencil"
+                                         action="vendaedita"
+                                         actionListener="#{vendaControle.edita(vnd)}" 
+                                         ajax="false" 
+                                         immediate="true"/>
                     </p:column>
 
                 </p:dataTable> 
@@ -45,7 +62,7 @@
                                  icon="pi pi-print" 
                                  ajax="false" 
                                  onclick="this.form.target = '_blank';"/>
-                <p:commandButton value="Registrar Nova Venda" action="vendaedita" />
+                <p:commandButton value="Registrar Nova Venda" action="#{vendaControle.novaVenda()}" />
             </h:form>
 
         </ui:define>

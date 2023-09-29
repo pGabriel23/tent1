@@ -9,7 +9,11 @@
         <ui:define name="body">
 
             <h:form>
-                <p:dataTable value="#{permissaoControle.listaPermissao}" var="per">
+                <p:dataTable value="#{permissaoControle.listaPermissao}" var="per"
+                             paginator="true" paginatorPosition="both" rows="10"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="5,10,{ShowAll|'All'}">
 
                     <p:column headerText="ID" filterBy="#{per.id}" filterMatchMode="contains">
                         #{per.id}
@@ -63,8 +67,18 @@
                         <p:selectBooleanCheckbox value="#{per.relatorio}" disabled="true"/>
                     </p:column>
 
-                    <p:column headerText="Operacoes">
-                        <p:commandLink value="Excluir" action="#{permissaoControle.excluir(per)}" ajax="false" immediate="true"/>
+                    <p:column headerText="Operações">
+                        <p:commandButton value="Excluir"
+                                         icon="pi pi-trash"
+                                         action="#{permissaoControle.excluir(per)}" 
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Editar"
+                                         icon="pi pi-pencil"
+                                         action="permissaoedita"
+                                         actionListener="#{permissaoControle.edita(per)}" 
+                                         ajax="false" 
+                                         immediate="true"/>
                     </p:column>
 
                 </p:dataTable> 
@@ -73,7 +87,7 @@
                                  icon="pi pi-print" 
                                  ajax="false" 
                                  onclick="this.form.target = '_blank';"/>
-                <p:commandButton value="Cadastrar Permissões" action="permissaoedita" />
+                <p:commandButton value="Cadastrar Permissões" action="#{permissaoControle.novaPermissao()}" />
             </h:form>
 
         </ui:define>

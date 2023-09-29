@@ -9,7 +9,11 @@
         <ui:define name="body">
 
             <h:form>
-                <p:dataTable value="#{estadoControle.listaEstado}" var="est">
+                <p:dataTable value="#{estadoControle.listaEstado}" var="est"
+                             paginator="true" paginatorPosition="both" rows="10"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="5,10,{ShowAll|'All'}">
 
                     <p:column headerText="ID" filterBy="#{est.id}" filterMatchMode="contains">
                         #{est.id}
@@ -23,8 +27,18 @@
                         #{est.uf}
                     </p:column>
 
-                    <p:column headerText="Operacoes">
-                        <p:commandLink value="Excluir" action="#{estadoControle.excluir(est)}" ajax="false" immediate="true"/>
+                    <p:column headerText="Operações">
+                        <p:commandButton value="Excluir"
+                                         icon="pi pi-trash"
+                                         action="#{estadoControle.excluir(est)}" 
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Editar"
+                                         icon="pi pi-pencil"
+                                         action="estadoedita"
+                                         actionListener="#{estadoControle.edita(est)}" 
+                                         ajax="false" 
+                                         immediate="true"/>
                     </p:column>
 
                 </p:dataTable> 
@@ -33,7 +47,7 @@
                                  icon="pi pi-print" 
                                  ajax="false" 
                                  onclick="this.form.target = '_blank';"/>
-                <p:commandButton value="Cadastrar Estado" action="estadoedita" />
+                <p:commandButton value="Cadastrar Estado" action="#{estadoControle.novoEstado()}" />
             </h:form>
 
         </ui:define>

@@ -10,7 +10,11 @@
 
             <h:form>
 
-                <p:dataTable value="#{usuarioControle.listaUsuario}" var="usr">
+                <p:dataTable value="#{usuarioControle.listaUsuario}" var="usr"
+                             paginator="true" paginatorPosition="both" rows="10"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="5,10,{ShowAll|'All'}">
 
                     <p:column headerText="ID" filterBy="#{usr.id}" filterMatchMode="contains">
                         #{usr.id}
@@ -34,7 +38,17 @@
                     </p:column>
 
                     <p:column headerText="Operacoes">
-                        <p:commandLink value="Excluir " action="#{usuarioControle.excluir(usr)}" ajax="false" immediate="true"/>
+                        <p:commandButton value="Excluir"
+                                         icon="pi pi-trash"
+                                         action="#{usuarioControle.excluir(usr)}" 
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Editar"
+                                         icon="pi pi-pencil"
+                                         action="usuarioedita"
+                                         actionListener="#{usuarioControle.edita(usr)}" 
+                                         ajax="false" 
+                                         immediate="true"/>
                     </p:column>
 
                 </p:dataTable> 
@@ -43,7 +57,7 @@
                                  icon="pi pi-print" 
                                  ajax="false" 
                                  onclick="this.form.target = '_blank';"/>
-                <p:commandButton value="Cadastrar Novo Usuario" action="usuarioedita" />
+                <p:commandButton value="Cadastrar Novo Usuario" action="#{usuarioControle.novoUsuario()}" />
             </h:form>
 
         </ui:define>

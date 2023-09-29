@@ -9,7 +9,11 @@
         <ui:define name="body">
 
             <h:form>
-                <p:dataTable value="#{cidadeControle.listaCidade}" var="cid">
+                <p:dataTable value="#{cidadeControle.listaCidade}" var="cid"  
+                             paginator="true" paginatorPosition="both" rows="10"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="5,10,{ShowAll|'All'}">
 
                     <p:column headerText="ID" filterBy="#{cid.id}" filterMatchMode="contains">
                         #{cid.id}
@@ -20,17 +24,27 @@
                     <p:column headerText="UF" filterBy="#{cid.uf.uf}" filterMatchMode="contains">
                         #{cid.uf.uf}
                     </p:column>
-                    <p:column headerText="Operacoes">
-                        <p:commandLink value="Excluir" action="#{cidadeControle.excluir(cid)}" ajax="false" immediate="true"/>
-                    </p:column>
 
+                    <p:column headerText="Operações">
+                        <p:commandButton value="Excluir"
+                                         icon="pi pi-trash"
+                                         action="#{cidadeControle.excluir(cid)}" 
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Editar"
+                                         icon="pi pi-pencil"
+                                         action="cidadeedita"
+                                         actionListener="#{cidadeControle.edita(cid)}" 
+                                         ajax="false" 
+                                         immediate="true"/>
+                    </p:column>
                 </p:dataTable>
                 <p:commandButton value="Imprimir relatório" 
                                  action="#{cidadeControle.relatorioCidade()}" 
                                  icon="pi pi-print" 
                                  ajax="false" 
                                  onclick="this.form.target = '_blank';"/>
-                <p:commandButton value="Cadastrar Cidade" action="cidadeedita" />
+                <p:commandButton value="Cadastrar Cidade" action="#{cidadeControle.novaCidade()}" />
             </h:form>
 
         </ui:define>

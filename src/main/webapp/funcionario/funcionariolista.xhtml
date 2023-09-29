@@ -9,7 +9,11 @@
         <ui:define name="body">
 
             <h:form>
-                <p:dataTable value="#{funcionarioControle.listaFuncionario}" var="fun">
+                <p:dataTable value="#{funcionarioControle.listaFuncionario}" var="fun"
+                             paginator="true" paginatorPosition="both" rows="10"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="5,10,{ShowAll|'All'}">
 
                     <p:column headerText="ID" filterBy="#{fun.id}" filterMatchMode="contains">
                         #{fun.id}
@@ -31,8 +35,18 @@
                         #{fun.cidade.nome}-#{fun.cidade.uf.uf}
                     </p:column>
 
-                    <p:column headerText="Operacoes">
-                        <p:commandLink value="Excluir" action="#{funcionarioControle.excluir(fun)}" ajax="false" immediate="true"/>
+                    <p:column headerText="Operações">
+                        <p:commandButton value="Excluir"
+                                         icon="pi pi-trash"
+                                         action="#{funcionarioControle.excluir(fun)}" 
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Editar"
+                                         icon="pi pi-pencil"
+                                         action="funcionarioedita"
+                                         actionListener="#{funcionarioControle.edita(fun)}" 
+                                         ajax="false" 
+                                         immediate="true"/>
                     </p:column>
 
                 </p:dataTable> 
@@ -41,7 +55,7 @@
                                  icon="pi pi-print" 
                                  ajax="false" 
                                  onclick="this.form.target = '_blank';"/>
-                <p:commandButton value="Cadastrar Funcionario" action="funcionarioedita" />
+                <p:commandButton value="Cadastrar Funcionario" action="#{funcionarioControle.novoFuncionario()}" />
             </h:form>
 
         </ui:define>

@@ -3,32 +3,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/index.xhtml">
         <ui:define name="body">
 
             <h:form>
-                <p:dataTable value="#{statusServicoControle.listaStatusServico}" var="ss">
+                <p:dataTable value="#{statusServicoControle.listaStatusServico}" var="ss"
+                             paginator="true" paginatorPosition="both" rows="10"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="5,10,{ShowAll|'All'}">
 
                     <p:column headerText="ID" filterBy="#{ss.id}" filterMatchMode="contains">
                         #{ss.id}
                     </p:column>
 
                     <p:column headerText="entrada" filterBy="#{ss.entrada}" filterMatchMode="contains">
-                        #{ss.entrada}
+                        <h:outputText value="#{ss.entrada}" >
+                            <f:convertDateTime locale="pt-BR" pattern="dd/MMM/yyyy" />
+                        </h:outputText>
                     </p:column>
 
                     <p:column headerText="instalacaoIniciada" filterBy="#{ss.instalacaoIniciada}" filterMatchMode="contains">
-                        #{ss.instalacaoIniciada}
+                        <h:outputText value="#{ss.instalacaoIniciada}" >
+                            <f:convertDateTime locale="pt-BR" pattern="dd/MMM/yyyy" />
+                        </h:outputText>
                     </p:column>
 
                     <p:column headerText="instalacaoConcluida" filterBy="#{ss.instalacaoConcluida}" filterMatchMode="contains">
-                        #{ss.instalacaoConcluida}
+                        <h:outputText value="#{ss.instalacaoConcluida}" >
+                            <f:convertDateTime locale="pt-BR" pattern="dd/MMM/yyyy" />
+                        </h:outputText>
                     </p:column>
 
                     <p:column headerText="segundaParcela" filterBy="#{ss.segundaParcela}" filterMatchMode="contains">
-                        #{ss.segundaParcela}
+                        <h:outputText value="#{ss.segundaParcela}" >
+                            <f:convertDateTime locale="pt-BR" pattern="dd/MMM/yyyy" />
+                        </h:outputText>
                     </p:column>
 
                     <p:column headerText="venda" filterBy="#{ss.venda.cliente.primeiroNome}" filterMatchMode="contains">
@@ -36,7 +49,17 @@
                     </p:column>
 
                     <p:column headerText="Operacoes">
-                        <p:commandLink value="Excluir" action="#{statusServicoControle.excluir(ss)}" ajax="false" immediate="true"/>
+                        <p:commandButton value="Excluir"
+                                         icon="pi pi-trash"
+                                         action="#{statusServicoControle.excluir(ss)}" 
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Editar"
+                                         icon="pi pi-pencil"
+                                         action="statusservicoedita"
+                                         actionListener="#{statusServicoControle.edita(ss)}" 
+                                         ajax="false" 
+                                         immediate="true"/>
                     </p:column>
 
                 </p:dataTable> 
@@ -45,7 +68,7 @@
                                  icon="pi pi-print" 
                                  ajax="false" 
                                  onclick="this.form.target = '_blank';"/>
-                <p:commandButton value="Atualizar Status de Servico" action="statusservicoedita" />
+                <p:commandButton value="Atualizar Status de Servico" action="#{statusServicoControle.novoStatusServico()}" />
             </h:form>
 
         </ui:define>

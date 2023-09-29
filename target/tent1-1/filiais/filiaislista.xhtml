@@ -9,7 +9,11 @@
         <ui:define name="body">
 
             <h:form>
-                <p:dataTable value="#{filiaisControle.listaFiliais}" var="fil">
+                <p:dataTable value="#{filiaisControle.listaFiliais}" var="fil"
+                             paginator="true" paginatorPosition="both" rows="10"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="5,10,{ShowAll|'All'}">
 
                     <p:column headerText="ID" filterBy="#{fil.id}" filterMatchMode="contains">
                         #{fil.id}
@@ -27,8 +31,18 @@
                         #{fil.estado.uf}
                     </p:column>
 
-                    <p:column headerText="Operacoes">
-                        <p:commandLink value="Excluir" action="#{filiaisControle.excluir(fil)}" ajax="false" immediate="true"/>
+                    <p:column headerText="Operações">
+                        <p:commandButton value="Excluir"
+                                         icon="pi pi-trash"
+                                         action="#{filiaisControle.excluir(fil)}" 
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Editar"
+                                         icon="pi pi-pencil"
+                                         action="filiaisedita"
+                                         actionListener="#{filiaisControle.edita(fil)}" 
+                                         ajax="false" 
+                                         immediate="true"/>
                     </p:column>
 
                 </p:dataTable> 
@@ -37,7 +51,7 @@
                                  icon="pi pi-print" 
                                  ajax="false" 
                                  onclick="this.form.target = '_blank';"/>
-                <p:commandButton value="Cadastrar Filial" action="filiaisedita" />
+                <p:commandButton value="Cadastrar Filial" action="#{filiaisControle.novaFilial()}" />
             </h:form>
 
         </ui:define>

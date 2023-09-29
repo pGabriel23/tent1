@@ -9,7 +9,11 @@
         <ui:define name="body">
 
             <h:form>
-                <p:dataTable value="#{fornecedorControle.listaFornecedor}" var="for">
+                <p:dataTable value="#{fornecedorControle.listaFornecedor}" var="for"
+                             paginator="true" paginatorPosition="both" rows="10"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="5,10,{ShowAll|'All'}">
 
                     <p:column headerText="ID" filterBy="#{for.id}" filterMatchMode="contains">
                         #{for.id}
@@ -23,8 +27,18 @@
                         #{for.contato}
                     </p:column>
 
-                    <p:column headerText="Operacoes">
-                        <p:commandLink value="Excluir" action="#{fornecedorControle.excluir(for)}" ajax="false" immediate="true"/>
+                    <p:column headerText="Operações">
+                        <p:commandButton value="Excluir"
+                                         icon="pi pi-trash"
+                                         action="#{fornecedorControle.excluir(for)}" 
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Editar"
+                                         icon="pi pi-pencil"
+                                         action="fornecedoredita"
+                                         actionListener="#{fornecedorControle.edita(for)}" 
+                                         ajax="false" 
+                                         immediate="true"/>
                     </p:column>
 
                 </p:dataTable> 
@@ -33,7 +47,7 @@
                                  icon="pi pi-print" 
                                  ajax="false" 
                                  onclick="this.form.target = '_blank';"/>
-                <p:commandButton value="Cadastrar Fornecedor" action="fornecedoredita" />
+                <p:commandButton value="Cadastrar Fornecedor" action="#{fornecedorControle.novoFornecedor()}" />
             </h:form>
 
         </ui:define>

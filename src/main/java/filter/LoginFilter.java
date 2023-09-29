@@ -38,7 +38,8 @@ public class LoginFilter implements Filter {
                     || url.contains("fornecedor") || url.contains("funcionario")
                     || url.contains("permissao") || url.contains("sistema")
                     || url.contains("statusservico") || url.contains("usuario")
-                    || url.contains("venda") || url.contains("logout")) {
+                    || url.contains("venda") || url.contains("logout")
+                    || url.contains("relatorio")) {
                 resp.sendRedirect(req.getServletContext().getContextPath() + "/login.xhtml");
             } else {
                 chain.doFilter(request, response);
@@ -67,6 +68,8 @@ public class LoginFilter implements Filter {
             } else if (url.contains("usuario") && !session.getUsuarioAtual().getPermissao().getUsuario()) {
                 resp.sendRedirect(req.getServletContext().getContextPath() + "/index.xhtml");
             } else if (url.contains("venda") && !session.getUsuarioAtual().getPermissao().getVenda()) {
+                resp.sendRedirect(req.getServletContext().getContextPath() + "/index.xhtml");
+            } else if (url.contains("relatorio") && !session.getUsuarioAtual().getPermissao().getRelatorio()) {
                 resp.sendRedirect(req.getServletContext().getContextPath() + "/index.xhtml");
             } else {
                 chain.doFilter(request, response);

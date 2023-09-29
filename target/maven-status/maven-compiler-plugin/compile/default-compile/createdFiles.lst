@@ -3,6 +3,7 @@ entidades\Sistema_.class
 entidades\Cidade_.class
 entidades\Sistema.class
 entidades\Funcionario.class
+relatorio\relatorio.class
 facade\UsuarioFacade.class
 controle\EstadoControle.class
 entidades\Cidade.class

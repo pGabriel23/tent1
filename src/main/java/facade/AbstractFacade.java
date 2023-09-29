@@ -41,11 +41,6 @@ public abstract class AbstractFacade<T> {
         return q.getResultList();
     }
 
-    public List<T> queryTodos() {
-        Query q = getEntityManager().createQuery("SELECT c FROM " + entityClass.getSimpleName() + " c");
-        return q.getResultList();
-    }
-
     public List<T> listaTodos() {
         Query q = getEntityManager().createNamedQuery(entityClass.getSimpleName() + ".findAll");
         return q.getResultList();

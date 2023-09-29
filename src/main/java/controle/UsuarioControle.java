@@ -97,4 +97,12 @@ public class UsuarioControle {
         usuarioFacade.remover(usr);
     }
 
+    public void edita(Usuario usr) {
+        usuario = usr;
+    }
+
+    public String novoUsuario() {
+        usuario = new Usuario();
+        return "usuarioedita";
+    }
 }

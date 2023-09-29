@@ -51,4 +51,12 @@ public class FornecedorControle {
         fornecedorFacade.remover(fnd);
     }
 
+    public void edita(Fornecedor fnd) {
+        fornecedor = fnd;
+    }
+
+    public String novoFornecedor() {
+        fornecedor = new Fornecedor();
+        return "fornecedoredita";
+    }
 }

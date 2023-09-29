@@ -66,4 +66,13 @@ public class StatusServicoControle {
     public void excluir(StatusServico ss) {
         statusServicoFacade.remover(ss);
     }
+
+    public void edita(StatusServico ss) {
+        statusServico = ss;
+    }
+
+    public String novoStatusServico() {
+        statusServico = new StatusServico();
+        return "statusservicoedita";
+    }
 }

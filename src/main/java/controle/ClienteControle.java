@@ -82,4 +82,12 @@ public class ClienteControle {
         clienteFacade.remover(cte);
     }
 
+    public void edita(Cliente cte) {
+        cliente = cte;
+    }
+    
+    public String novoCliente() {
+        cliente = new Cliente();
+        return "clienteedita";
+    }
 }

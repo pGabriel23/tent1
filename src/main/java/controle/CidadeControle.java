@@ -36,11 +36,11 @@ public class CidadeControle {
         return estadoConverter;
     }
 
-    public void relatorioCidade(){
-        HashMap parametros = new HashMap();    
+    public void relatorioCidade() {
+        HashMap parametros = new HashMap();
         relatorio.relatorio.imprimeRelatorio("/relatorio-cidade", parametros, cidadeFacade.listaTodos());
-    }    
-    
+    }
+
     public void setEstadoConverter(ConverterGererico estadoConverter) {
         this.estadoConverter = estadoConverter;
     }
@@ -67,4 +67,12 @@ public class CidadeControle {
         cidadeFacade.remover(cid);
     }
 
+    public void edita(Cidade cid) {
+        cidade = cid;
+    }
+
+    public String novaCidade() {
+        cidade = new Cidade();
+        return "cidadeedita";
+    }
 }

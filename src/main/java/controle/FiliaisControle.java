@@ -82,4 +82,12 @@ public class FiliaisControle {
         filiaisFacade.remover(fil);
     }
 
+    public void edita(Filiais fil) {
+        filiais = fil;
+    }
+
+    public String novaFilial() {
+        filiais = new Filiais();
+        return "filiaisedita";
+    }
 }

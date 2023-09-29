@@ -81,4 +81,13 @@ public class VendaControle {
     public void excluir(Venda vnd) {
         vendaFacade.remover(vnd);
     }
+
+    public void edita(Venda vnd) {
+        venda = vnd;
+    }
+
+    public String novaVenda() {
+        venda = new Venda();
+        return "vendaedita";
+    }
 }

@@ -66,4 +66,13 @@ public class SistemaControle {
     public void excluir(Sistema sis) {
         sistemaFacade.remover(sis);
     }
+    
+    public void edita(Sistema sis) {
+        sistema = sis;
+    }
+
+    public String novoSistema() {
+        sistema = new Sistema();
+        return "sistemaedita";
+    }
 }

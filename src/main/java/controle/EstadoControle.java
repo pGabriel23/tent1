@@ -51,4 +51,12 @@ public class EstadoControle {
         estadoFacade.remover(est);
     }
 
+    public void edita(Estado est) {
+        estado = est;
+    }
+
+    public String novoEstado() {
+        estado = new Estado();
+        return "estadoedita";
+    }
 }

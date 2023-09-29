@@ -51,4 +51,12 @@ public class PermissaoControle {
         permissaoFacade.remover(perm);
     }
 
+    public void edita(Permissao perm) {
+        permissao = perm;
+    }
+
+    public String novaPermissao() {
+        permissao = new Permissao();
+        return "permissaoedita";
+    }
 }

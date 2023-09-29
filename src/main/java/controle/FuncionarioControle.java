@@ -67,4 +67,12 @@ public class FuncionarioControle {
         funcionarioFacade.remover(fun);
     }
 
+    public void edita(Funcionario fun) {
+        funcionario = fun;
+    }
+
+    public String novoFuncionario() {
+        funcionario = new Funcionario();
+        return "funcionarioedita";
+    }
 }

@@ -86,7 +86,6 @@ public class VendaControle {
     }
 
     public void relatorioVendaFilial(Filiais ID) {
-        System.out.println(ID);
         HashMap parametros = new HashMap();
         relatorio.relatorio.imprimeRelatorio("/relatorio-venda-filial", parametros, vendaFacade.findByFiliais(ID));
     }

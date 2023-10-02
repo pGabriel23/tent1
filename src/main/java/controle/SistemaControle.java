@@ -5,6 +5,7 @@
 package controle;
 
 import Converter.ConverterGererico;
+import entidades.Fornecedor;
 import entidades.Sistema;
 import facade.FornecedorFacade;
 import facade.SistemaFacade;
@@ -49,6 +50,16 @@ public class SistemaControle {
         relatorio.relatorio.imprimeRelatorio("/relatorio-sistema", parametros, sistemaFacade.listaTodos());
     }
 
+    public void relatorioPrecoFornecedor(Fornecedor For) {
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-preco-sistema", parametros, sistemaFacade.findByFornecedor(For));
+    }
+
+    public void relatorioPrecoTamanho(int qnt) {
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-preco-tamanho", parametros, sistemaFacade.findByTamanho(qnt));
+    }
+
     public Sistema getSistema() {
         return sistema;
     }
@@ -66,7 +77,7 @@ public class SistemaControle {
     public void excluir(Sistema sis) {
         sistemaFacade.remover(sis);
     }
-    
+
     public void edita(Sistema sis) {
         sistema = sis;
     }

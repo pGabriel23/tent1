@@ -35,6 +35,7 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Sistema.findByInversor", query = "SELECT s FROM Sistema s WHERE s.inversor = :inversor"),
     @NamedQuery(name = "Sistema.findByInversor1", query = "SELECT s FROM Sistema s WHERE s.inversor1 = :inversor1"),
     @NamedQuery(name = "Sistema.findByModulo", query = "SELECT s FROM Sistema s WHERE s.modulo = :modulo"),
+    @NamedQuery(name = "Sistema.findByFornecedor", query = "SELECT s FROM Sistema s WHERE s.fornecedor = :fornecedor"),
     @NamedQuery(name = "Sistema.findByModulo1", query = "SELECT s FROM Sistema s WHERE s.modulo1 = :modulo1"),
     @NamedQuery(name = "Sistema.findByCodigo", query = "SELECT s FROM Sistema s WHERE s.codigo = :codigo")})
 public class Sistema implements Serializable, ClassePai {

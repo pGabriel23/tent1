@@ -5,6 +5,7 @@
 package facade;
 
 import entidades.Filiais;
+import entidades.Fornecedor;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -65,6 +66,18 @@ public abstract class AbstractFacade<T> {
     public List<T> findByFiliais(Filiais id) {
         Query q = getEntityManager().createNamedQuery(entityClass.getSimpleName() + ".findByFiliais");
         q.setParameter("filiais", id);
+        return q.getResultList();
+    }
+
+    public List<T> findByFornecedor(Fornecedor For) {
+        Query q = getEntityManager().createNamedQuery(entityClass.getSimpleName() + ".findByFornecedor");
+        q.setParameter("fornecedor", For);
+        return q.getResultList();
+    }
+
+    public List<T> findByTamanho(int qnt) {
+        Query q = getEntityManager().createNamedQuery(entityClass.getSimpleName() + ".findByModulo1");
+        q.setParameter("modulo1", qnt);
         return q.getResultList();
     }
 }

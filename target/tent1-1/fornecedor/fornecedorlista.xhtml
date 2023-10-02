@@ -7,7 +7,7 @@
 
     <ui:composition template="/index.xhtml">
         <ui:define name="body">
-
+            <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
             <h:form>
                 <p:dataTable value="#{fornecedorControle.listaFornecedor}" var="for"
                              paginator="true" paginatorPosition="both" rows="10"

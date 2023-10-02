@@ -7,9 +7,8 @@
 
     <ui:composition template="/index.xhtml">
         <ui:define name="body">
-
+            <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
             <h:form>
-
                 <p:dataTable value="#{usuarioControle.listaUsuario}" var="usr"
                              paginator="true" paginatorPosition="both" rows="10"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"

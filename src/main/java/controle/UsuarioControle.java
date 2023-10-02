@@ -83,14 +83,9 @@ public class UsuarioControle {
     }
 
     public String salvar() {
-        if (usuarioFacade.buscaPorNome(usuario.getNome()).isEmpty()) {
-            usuarioFacade.salvar(usuario);
-            usuario = new Usuario();
-            return "usuariolista";
-        }
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario com esse nome já existe", ""));
-        return null;
+        usuarioFacade.salvar(usuario);
+        usuario = new Usuario();
+        return "usuariolista";
     }
 
     public void excluir(Usuario usr) {

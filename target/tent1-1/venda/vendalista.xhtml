@@ -36,6 +36,10 @@
                         #{vnd.vendedor}
                     </p:column>
 
+                    <p:column headerText="filial" filterBy="#{vnd.filiais}" filterMatchMode="contains">
+                        #{vnd.filiais.id}
+                    </p:column>
+
                     <p:column headerText="data" filterBy="#{vnd.data}" filterMatchMode="contains">
                         <h:outputText value="#{vnd.data}" >
                             <f:convertDateTime locale="pt-BR" pattern="dd/MMM/yyyy" />

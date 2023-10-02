@@ -31,12 +31,21 @@
                                        itemValue="#{sis}"/>
                     </p:selectOneMenu>
 
+
                     <p:outputLabel value="Nome do Cliente" for="c" /> 
                     <p:selectOneMenu id="c" value="#{vendaControle.venda.cliente}" converter="#{vendaControle.clienteConverter}" >
                         <f:selectItems value="#{clienteControle.listaCliente}"
                                        var="cli"
                                        itemLabel="${cli.primeiroNome} ${cli.segundoNome}"
                                        itemValue="#{cli}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Filial" for="fil" /> 
+                    <p:selectOneMenu id="fil" value="#{vendaControle.venda.filiais}" converter="#{vendaControle.filialConverter}" >
+                        <f:selectItems value="#{filiaisControle.listaFiliais}"
+                                       var="fil"
+                                       itemLabel="${fil.id}"
+                                       itemValue="#{fil}"/>
                     </p:selectOneMenu>
                 </p:panelGrid>
                 <br/>

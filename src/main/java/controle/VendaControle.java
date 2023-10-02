@@ -5,8 +5,10 @@
 package controle;
 
 import Converter.ConverterGererico;
+import entidades.Filiais;
 import entidades.Venda;
 import facade.ClienteFacade;
+import facade.FiliaisFacade;
 import facade.SistemaFacade;
 import facade.VendaFacade;
 import java.util.HashMap;
@@ -30,8 +32,22 @@ public class VendaControle {
     private SistemaFacade sistemaFacade;
     @EJB
     private ClienteFacade clienteFacade;
+    @EJB
+    private FiliaisFacade filiaisFacade;
     private ConverterGererico sistemaConverter;
     private ConverterGererico clienteConverter;
+    private ConverterGererico filialConverter;
+
+    public ConverterGererico getFilialConverter() {
+        if (filialConverter == null) {
+            filialConverter = new ConverterGererico(filiaisFacade);
+        }
+        return filialConverter;
+    }
+
+    public void setFilialConverter(ConverterGererico filialConverter) {
+        this.filialConverter = filialConverter;
+    }
 
     public ConverterGererico getSistemaConverter() {
         if (sistemaConverter == null) {
@@ -62,6 +78,17 @@ public class VendaControle {
     public void relatorioVenda() {
         HashMap parametros = new HashMap();
         relatorio.relatorio.imprimeRelatorio("/relatorio-venda", parametros, vendaFacade.listaTodos());
+    }
+
+    public void relatorioVendaVendedor(String nome) {
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-vendas-funcionario", parametros, vendaFacade.vendaFuncionario(nome));
+    }
+
+    public void relatorioVendaFilial(Filiais ID) {
+        System.out.println(ID);
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-venda-filial", parametros, vendaFacade.findByFiliais(ID));
     }
 
     public Venda getVenda() {

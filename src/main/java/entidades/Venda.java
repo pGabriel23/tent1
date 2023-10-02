@@ -36,6 +36,7 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Venda.findById", query = "SELECT v FROM Venda v WHERE v.id = :id"),
     @NamedQuery(name = "Venda.findByPreco", query = "SELECT v FROM Venda v WHERE v.preco = :preco"),
     @NamedQuery(name = "Venda.findByData", query = "SELECT v FROM Venda v WHERE v.data = :data"),
+    @NamedQuery(name = "Venda.findByFiliais", query = "SELECT v FROM Venda v WHERE v.filiais = :filiais"),
     @NamedQuery(name = "Venda.findByVendedor", query = "SELECT v FROM Venda v WHERE v.vendedor = :vendedor")})
 public class Venda implements Serializable, ClassePai {
 
@@ -67,6 +68,9 @@ public class Venda implements Serializable, ClassePai {
     @JoinColumn(name = "sistema", referencedColumnName = "codigo")
     @ManyToOne(optional = false)
     private Sistema sistema;
+    @JoinColumn(name = "filial", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Filiais filiais;
 
     public Venda() {
     }
@@ -137,6 +141,14 @@ public class Venda implements Serializable, ClassePai {
 
     public void setSistema(Sistema sistema) {
         this.sistema = sistema;
+    }
+
+    public Filiais getFiliais() {
+        return filiais;
+    }
+
+    public void setFiliais(Filiais filiais) {
+        this.filiais = filiais;
     }
 
     @Override

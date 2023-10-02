@@ -54,6 +54,11 @@ public class StatusServicoControle {
         relatorio.relatorio.imprimeRelatorio("/relatorio-clientes-devedores", parametros, statusServicoFacade.clientesDevedores());
     }
 
+    public void relatorioServicosConcluidos() {
+        HashMap parametros = new HashMap();
+        relatorio.relatorio.imprimeRelatorio("/relatorio-instalacoes-finalizadas", parametros, statusServicoFacade.instalacoesFinalizadas());
+    }
+
     public StatusServico getStatusServico() {
         return statusServico;
     }

@@ -49,7 +49,7 @@ public class StatusServicoControle {
         relatorio.relatorio.imprimeRelatorio("/relatorio-statusservico", parametros, statusServicoFacade.listaTodos());
     }
 
-    public void clienteDevedores() {
+    public void relatorioClientesDevedores() {
         HashMap parametros = new HashMap();
         relatorio.relatorio.imprimeRelatorio("/relatorio-clientes-devedores", parametros, statusServicoFacade.clientesDevedores());
     }

@@ -32,6 +32,7 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "StatusServico.findByEntrada", query = "SELECT s FROM StatusServico s WHERE s.entrada = :entrada"),
     @NamedQuery(name = "StatusServico.findByInstalacaoIniciada", query = "SELECT s FROM StatusServico s WHERE s.instalacaoIniciada = :instalacaoIniciada"),
     @NamedQuery(name = "StatusServico.findByInstalacaoConcluida", query = "SELECT s FROM StatusServico s WHERE s.instalacaoConcluida = :instalacaoConcluida"),
+    @NamedQuery(name = "StatusServico.findBySegundaParcelaNull", query = "SELECT s FROM StatusServico s WHERE s.segundaParcela IS NULL"),
     @NamedQuery(name = "StatusServico.findBySegundaParcela", query = "SELECT s FROM StatusServico s WHERE s.segundaParcela = :segundaParcela")})
 public class StatusServico implements Serializable, ClassePai {
 

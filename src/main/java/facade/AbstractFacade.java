@@ -4,7 +4,6 @@
  */
 package facade;
 
-import entidades.ClassePai;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -46,4 +45,8 @@ public abstract class AbstractFacade<T> {
         return q.getResultList();
     }
 
+    public List<T> clientesDevedores() {
+        Query q = getEntityManager().createNamedQuery(entityClass.getSimpleName() + ".findBySegundaParcelaNull");
+        return q.getResultList();
+    }
 }

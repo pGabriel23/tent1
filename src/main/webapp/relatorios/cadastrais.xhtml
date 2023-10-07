@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+            <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+            <h:form>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Relatório: Cidades Cadastradas" for="cidade"/>
+                    <p:commandButton value="Imprimir relatório" 
+                                     action="#{cidadeControle.relatorioCidade()}" 
+                                     id="cidade"
+                                     icon="pi pi-print" 
+                                     ajax="false" 
+                                     onclick="this.form.target = '_blank';"/>
+
+                    <p:outputLabel value="Relatório: Clientes Cadastrados" for="cliente"/>
+                    <p:commandButton value="Imprimir relatório" 
+                                     action="#{clienteControle.relatorioCliente()}" 
+                                     id="cliente"
+                                     icon="pi pi-print" 
+                                     ajax="false" 
+                                     onclick="this.form.target = '_blank';"/>
+
+                    <p:outputLabel value="Relatório: Estados Cadastrados" for="estado"/>
+                    <p:commandButton value="Imprimir relatório" 
+                                     action="#{estadoControle.relatorioEstado()}" 
+                                     id="estado"
+                                     icon="pi pi-print" 
+                                     ajax="false" 
+                                     onclick="this.form.target = '_blank';"/>
+
+                    <p:outputLabel value="Relatório: Filiais Cadastradas" for="filiais"/>
+                    <p:commandButton value="Imprimir relatório" 
+                                     action="#{filiaisControle.relatorioFiliais()}" 
+                                     id="filiais"
+                                     icon="pi pi-print" 
+                                     ajax="false" 
+                                     onclick="this.form.target = '_blank';"/>
+
+                    <p:outputLabel value="Relatório: Fornecedores Cadastrados" for="fornecedor"/>
+                    <p:commandButton value="Imprimir relatório" 
+                                     action="#{fornecedorControle.relatorioFornecedor()}" 
+                                     id="fornecedor"
+                                     icon="pi pi-print" 
+                                     ajax="false" 
+                                     onclick="this.form.target = '_blank';"/>
+
+                    <p:outputLabel value="Relatório: Funcionarios Cadastrados" for="funcionario"/>
+                    <p:commandButton value="Imprimir relatório" 
+                                     action="#{funcionarioControle.relatorioFuncionario()}" 
+                                     id="funcionario"
+                                     icon="pi pi-print" 
+                                     ajax="false" 
+                                     onclick="this.form.target = '_blank';"/>
+
+                    <p:outputLabel value="Relatório: Permissões" for="permissao"/>
+                    <p:commandButton value="Imprimir relatório" 
+                                     action="#{permissaoControle.relatorioPermissao()}" 
+                                     id="permissao"
+                                     icon="pi pi-print" 
+                                     ajax="false" 
+                                     onclick="this.form.target = '_blank';"/>
+
+                    <p:outputLabel value="Relatório: Sistemas Cadastrados" for="sistemas"/>
+                    <p:commandButton value="Imprimir relatório" 
+                                     action="#{sistemaControle.relatorioSistema()}" 
+                                     id="sistemas"
+                                     icon="pi pi-print" 
+                                     ajax="false" 
+                                     onclick="this.form.target = '_blank';"/>
+
+                    <p:outputLabel value="Relatório: Usuarios Cadastrados" for="usuarios"/>
+                    <p:commandButton value="Imprimir relatório" 
+                                     action="#{usuarioControle.relatorioUsuario()}" 
+                                     id="usuarios"
+                                     icon="pi pi-print" 
+                                     ajax="false" 
+                                     onclick="this.form.target = '_blank';"/>
+                </p:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

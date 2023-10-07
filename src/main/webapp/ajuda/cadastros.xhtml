@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+            <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+            <h:form>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Excluir" for="excluir"/>
+                    <p:commandButton value="Ver" 
+                                     type="button" 
+                                     id="excluir" 
+                                     icon="pi pi-eye"
+                                     onclick="PF('excluir').show()"/>
+
+                    <p:outputLabel value="Editar" for="editar"/>
+                    <p:commandButton value="Ver" 
+                                     type="button" 
+                                     id="editar" 
+                                     icon="pi pi-eye" 
+                                     onclick="PF('editar').show()"/>
+
+                    <p:outputLabel value="Criar Novo" for="novo"/>
+                    <p:commandButton value="Ver" 
+                                     type="button" 
+                                     id="novo" 
+                                     icon="pi pi-eye" 
+                                     onclick="PF('novo').show()"/>
+
+                    <p:outputLabel value="Listar" for="listar"/>
+                    <p:commandButton value="Ver" 
+                                     type="button" 
+                                     id="listar" 
+                                     icon="pi pi-eye" 
+                                     onclick="PF('listar').show()"/>
+
+                </p:panelGrid>
+                <p:dialog header="Excluir" widgetVar="excluir" minHeight="40" width="350" modal="false">
+                    <p>
+                        Para excluir um item cadastrado, na página contendo a lista de itens cadastrados.
+                    </p>
+                    <p>
+                        Basta clicar no botão "excluir" ao lado do item a ser excluído.
+                    </p>
+                    <img src='imagens/excluir.png'/>
+                </p:dialog>
+
+                <p:dialog header="Editar" widgetVar="editar" minHeight="40" width="350" modal="false">
+                    <p>
+                        Para editar um item ja cadastrado, na página contendo a lista de itens cadastrados.
+                    </p>
+                    <p>
+                        Basta clicar no botão "editar" ao lado do item a ser editado.
+                    </p>
+                    <img src='imagens/editar.png'/>
+                </p:dialog>
+
+                <p:dialog header="Criar Novo" widgetVar="novo" minHeight="40" width="350" modal="false">
+                    <p>
+                        Para criar um novo cadastro primeiro selecione a página no menu ao lado.
+                    </p>
+                    <p>
+                        Depois selecione "Novo Cadastro" ou "Registrar Novo" no final da página.
+                    </p>
+                    <img src='imagens/Cadastrar.png'/>
+                    <img src='imagens/registrar.png'/>
+                </p:dialog>
+
+                <p:dialog header="Listar" widgetVar="listar" minHeight="40" width="350" modal="false">
+                    <p>
+                        Para ver uma lista de todos os itens cadastrados basta selecionar a pagina no menu ao lado esquerdo da tela.
+                    </p>
+                    <img src='imagens/menuEsquerda.png'/>
+                </p:dialog>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

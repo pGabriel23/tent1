@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+            <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+            <h:form>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Imprimir Relatório" for="relatorio"/>
+                    <p:commandButton value="Ver" 
+                                     type="button" 
+                                     id="relatorio" 
+                                     icon="pi pi-eye"
+                                     onclick="PF('relatorio').show()"/>
+
+                    <p:outputLabel value="Imprimir Relatório com Condições" for="rc"/>
+                    <p:commandButton value="Ver" 
+                                     type="button" 
+                                     id="rc" 
+                                     icon="pi pi-eye" 
+                                     onclick="PF('rc').show()"/>
+
+                    <p:outputLabel value="Imprimir Relatório de Item" for="relItem"/>
+                    <p:commandButton value="Ver" 
+                                     type="button" 
+                                     id="relItem" 
+                                     icon="pi pi-eye" 
+                                     onclick="PF('relItem').show()"/>
+
+                </p:panelGrid>
+                <p:dialog header="Imprimir Relatório " widgetVar="relatorio" minHeight="40" width="470" modal="false">
+                    <p>
+                        Para imprimir um relatório acesse a página de relatório a partir do menu na esquerda da tela.
+                    </p>
+                    <p>
+                        Então clique em "Imprimir Relatório".
+                    </p>
+                    <img src='imagens/menuEsquerdaRelatorio.png'/>
+                    <img src='imagens/imprimirRelatorio.png'/>
+                </p:dialog>
+
+                <p:dialog header="Imprimir Relatório com Condições" widgetVar="rc" minHeight="40" width="550" modal="false">
+                    <p>
+                        Para imprimir um relatório que tem condições basta preencher os campos antes de clicar em "Imprimir Relatório".
+                    </p>
+                    <img src='imagens/relatorioPreencher.png'/>
+                </p:dialog>
+
+                <p:dialog header="Imprimir Relatório de Item" widgetVar="relItem" minHeight="40" width="1090" modal="false">
+                    <p>
+                        Para imprimir um relatório a partir de um item da lista basta clicar em "Imprimir Relatório" ao lado do item que deseja aparecer no relatório.
+                    </p>
+                    <p>
+                        Imagem contendo um exemplo, imprimir o relatório de vendas de uma filial.
+                    </p>
+                    <img src='imagens/selecionarFilial.png'/>
+                </p:dialog>
+                
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

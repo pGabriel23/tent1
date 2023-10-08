@@ -9,20 +9,28 @@
         <ui:define name="body">
             <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
             <h:form>
-                <p:dataTable value="#{vendaControle.listaVenda}" var="vnd"
+                <p:dataTable value="#{filiaisControle.listaFiliais}" var="fil"
                              paginator="true" paginatorPosition="both" rows="10"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
                              rowsPerPageTemplate="5,10,{ShowAll|'All'}">
 
-                    <p:column headerText="filial" filterBy="#{vnd.filiais}" filterMatchMode="contains">
-                        #{vnd.filiais.cidade.nome}
+                    <p:column headerText="Cidade" filterBy="#{fil.cidade.nome}" filterMatchMode="contains">
+                        #{fil.cidade.nome}
+                    </p:column>
+
+                    <p:column headerText="UF" filterBy="#{fil.estado.uf}" filterMatchMode="contains">
+                        #{fil.estado.uf}
+                    </p:column>
+
+                    <p:column headerText="Gerente" filterBy="#{fil.gerente}" filterMatchMode="contains">
+                        #{fil.gerente}
                     </p:column>
 
                     <p:column headerText="Operacoes">
                         <p:commandButton value="Relatorio"
                                          icon="pi pi-print" 
-                                         actionListener="#{vendaControle.relatorioVendaFilial(vnd.filiais)}" 
+                                         actionListener="#{vendaControle.relatorioVendaFilial(fil)}" 
                                          ajax="false" 
                                          immediate="true"
                                          onclick="this.form.target = '_blank';"/>

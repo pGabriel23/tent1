@@ -42,14 +42,14 @@
                             <p:menuitem value="Instalações finalizadas" ajax="false" outcome="/relatorios/servicosconcluidos"/>
                         </p:submenu>
 
-                        <p:submenu label="Ajuda" rendered="true"> 
-                            <p:menuitem value="Cadastros" ajax="false" outcome="/ajuda/cadastros"/>
-                            <p:menuitem value="Relatórios " ajax="false" outcome="/ajuda/relatorios"/>
-                        </p:submenu>
-
                         <p:submenu label="Sessão" rendered="true">
                             <p:menuitem value="Login" ajax="false" outcome="/login" rendered="#{!loginControle.isLogged}"/>
                             <p:menuitem value="Logout" ajax="false" outcome="/logout" rendered="#{loginControle.isLogged}"/>
+                        </p:submenu>
+
+                        <p:submenu label="Ajuda" rendered="true"> 
+                            <p:menuitem value="Cadastros" ajax="false" outcome="/ajuda/cadastros"/>
+                            <p:menuitem value="Relatórios " ajax="false" outcome="/ajuda/relatorios"/>
                         </p:submenu>
 
                     </p:menu>

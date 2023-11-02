@@ -4,7 +4,6 @@
  */
 package relatorio;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -50,7 +49,6 @@ public class relatorio {
                     "Erro ao imprimir relatório: " + e.getMessage(),
                     "");
             FacesContext.getCurrentInstance().addMessage(null, message);
-            e.printStackTrace();
         }
 
     }
